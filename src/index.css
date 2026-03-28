@@ -1,0 +1,345 @@
+@import "tailwindcss";
+
+/* ===== DESIGN SYSTEM: Frutiger Aero Tech / Luminous Engineering ===== */
+@theme {
+  --color-surface-container-high: #d8e4ec;
+  --color-tertiary-dim: #435600;
+  --color-secondary-dim: #005a4d;
+  --color-primary: #00647e;
+  --color-on-primary-fixed: #002733;
+  --color-surface: #eff8fe;
+  --color-outline-variant: #a5aeb4;
+  --color-tertiary-fixed-dim: #beee00;
+  --color-secondary-container: #26fedc;
+  --color-on-primary-container: #003e50;
+  --color-tertiary: #4e6300;
+  --color-on-secondary-container: #005d4f;
+  --color-on-primary-fixed-variant: #00485b;
+  --color-on-tertiary: #e1ff88;
+  --color-surface-tint: #00647e;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-tertiary-fixed: #3a4a00;
+  --color-error-dim: #9f0519;
+  --color-tertiary-container: #cafd00;
+  --color-surface-container: #dfeaf1;
+  --color-surface-bright: #eff8fe;
+  --color-on-surface-variant: #545d62;
+  --color-primary-fixed: #00cbfe;
+  --color-inverse-on-surface: #959ea4;
+  --color-on-error: #ffefee;
+  --color-primary-container: #00cbfe;
+  --color-on-secondary-fixed-variant: #006859;
+  --color-inverse-surface: #070f13;
+  --color-secondary-fixed-dim: #00efce;
+  --color-surface-dim: #c8d7df;
+  --color-on-primary: #e3f5ff;
+  --color-inverse-primary: #00cbfe;
+  --color-error-container: #fb5151;
+  --color-surface-container-low: #e8f2f9;
+  --color-on-error-container: #570008;
+  --color-on-tertiary-container: #4a5e00;
+  --color-error: #b31b25;
+  --color-surface-container-highest: #d1dfe7;
+  --color-on-surface: #273034;
+  --color-secondary-fixed: #26fedc;
+  --color-primary-fixed-dim: #00bcec;
+  --color-background: #eff8fe;
+  --color-on-secondary: #c2ffef;
+  --color-secondary: #006859;
+  --color-on-secondary-fixed: #00483d;
+  --color-surface-variant: #d1dfe7;
+  --color-outline: #6f787d;
+  --color-on-background: #273034;
+  --color-tertiary-fixed: #cafd00;
+  --color-primary-dim: #00576e;
+  --color-on-tertiary-fixed-variant: #526900;
+
+  --font-headline: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  --font-label: "Space Grotesk", system-ui, sans-serif;
+}
+
+/* ===== BASE STYLES ===== */
+html {
+  scroll-behavior: auto !important; /* Lenis handles smooth scroll */
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+
+/* ===== GLASS PANEL ===== */
+.glass-panel {
+  background: rgba(232, 242, 249, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ===== TECH GRID BACKGROUND ===== */
+.tech-grid-bg {
+  background-image: radial-gradient(circle at 2px 2px, rgba(165, 174, 180, 0.1) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* ===== GLOW ORB ===== */
+.glow-orb {
+  filter: blur(80px);
+  position: absolute;
+  z-index: -1;
+  opacity: 0.4;
+  will-change: transform;
+}
+
+/* ===== MATERIAL ICONS ===== */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ===== NAVBAR GLASS TRANSITION ===== */
+.navbar-scrolled {
+  background: rgba(232, 248, 255, 0.85) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 100, 126, 0.15);
+}
+
+/* ===== HERO GRADIENT TEXT GLOW ===== */
+.gradient-text-glow {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(135deg, var(--color-primary), var(--color-primary-container), var(--color-secondary));
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ===== FLOATING ANIMATION ===== */
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-idle {
+  animation: gentleFloat 7s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+/* ===== BUTTON HOVER GLOW ===== */
+.btn-primary-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary-glow:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 50px rgba(0, 203, 254, 0.35);
+}
+
+.btn-primary-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary-glow:hover::after {
+  opacity: 1;
+}
+
+/* ===== SECONDARY BUTTON ===== */
+.btn-secondary-glass {
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary-glass:hover {
+  transform: scale(1.04);
+  background-color: var(--color-surface-container-low);
+  box-shadow: 0 6px 30px rgba(0, 100, 126, 0.1);
+}
+
+/* ===== PROJECT CARD HOVER ===== */
+.project-card {
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.project-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 30px 70px rgba(0, 100, 126, 0.12);
+}
+
+.project-card:hover .project-card-image {
+  transform: scale(1.08);
+}
+
+.project-card-image {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===== EXPERIENCE CARD ===== */
+.exp-card {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.exp-card:hover {
+  background-color: var(--color-surface-container-lowest);
+  box-shadow: 0 16px 50px rgba(0, 100, 126, 0.07);
+}
+
+/* ===== SKILL PILL ===== */
+.skill-pill {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-pill:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 100, 126, 0.08);
+}
+
+/* ===== CONTACT CARD ===== */
+.contact-card {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 16px 50px rgba(0, 100, 126, 0.1);
+}
+
+.contact-card:hover .contact-icon {
+  transform: scale(1.12);
+}
+
+.contact-icon {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===== LINK HOVER GLOW ===== */
+.nav-link {
+  position: relative;
+  transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* ===== FOOTER LINK ===== */
+.footer-link {
+  position: relative;
+  transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #06b6d4;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* ===== ICON BOUNCE ===== */
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.icon-float {
+  animation: iconBounce 4.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+/* ===== LENIS ===== */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ===== GSAP REVEAL ===== */
+.gsap-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: opacity, transform;
+}
+
+.gsap-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  will-change: opacity, transform;
+}
+
+.gsap-reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  will-change: opacity, transform;
+}
+
+.gsap-reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  will-change: opacity, transform;
+}
+
+/* ===== STAGGER WORD ===== */
+.stagger-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: opacity, transform;
+}
+
+/* ===== TILT CARD ===== */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
