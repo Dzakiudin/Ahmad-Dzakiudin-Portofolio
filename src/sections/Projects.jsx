@@ -10,34 +10,37 @@ const PROJECTS = [
     title: 'Automatic HPP Calculator',
     icon: 'calculate',
     description:
-      'Intelligent Cost of Goods Sold (HPP) calculator engineered with Google Gemini Pro AI. Automates complex ingredient derivative calculations directly mapped to financial metrics, packaged as a cross-platform mobile app via Capacitor.',
+      'Intelligent Cost of Goods Sold (HPP) calculator engineered with Google Gemini Pro AI. Automates complex ingredient derivative calculations directly mapped to financial metrics, packaged as a cross-platform mobile app.',
     tags: ['Next.js', 'Gemini AI', 'Capacitor'],
     image:
-      'https://play-lh.googleusercontent.com/Oz_p1mpc_N_Y7UJX9bgMWp8sAx4n6_hsW-9UjxE-kP3Ft_zt4T-B5ed829kFzFaoXjiCBktAeOn9IbxHI75jOA=w526-h296-rw',
+      'https://raw.githubusercontent.com/Dzakiudin/Automatic-HPP-Calculator/refs/heads/main/docs/Screenshot%202026-03-17%20175243.png',
     imageAlt:
       'Advanced financial and accounting dashboard with glowing analytics and futuristic layout',
+    link: 'https://github.com/Dzakiudin/Automatic-HPP-Calculator',
   },
   {
-    title: 'IdentiMap OSINT',
-    icon: 'travel_explore',
+    title: 'Perpustakaan PDF',
+    icon: 'library_books',
     description:
-      'Advanced digital footprint correlation engine featuring a multi-engine architecture, telecom analytics, holehe breach cross-referencing, and interactive node graph visualizations.',
-    tags: ['Python', 'FastAPI', 'Next.js'],
+      'A sophisticated digital library platform for managing PDF documents. Features high-performance indexing, metadata management, and a seamless reading experience with a modern, responsive UI.',
+    tags: ['React', 'PDF.js', 'Vite'],
     image:
-      'https://framerusercontent.com/images/zTPYT8N804AzmADO4D9VoYM0DA.webp',
+      'https://raw.githubusercontent.com/Dzakiudin/Perpustakaan-PDF/refs/heads/main/docs/books.png',
     imageAlt:
-      'Node graph visualization showing interconnected digital footprints and identity parameters in a dark cyberpunk theme',
+      'Digital library interface showing organized document covers and metadata in a sleek dark theme',
+    link: 'https://github.com/Dzakiudin/Perpustakaan-PDF',
   },
   {
-    title: 'Agent Jackie',
-    icon: 'psychology',
+    title: 'Perpustakaan Informasi APP',
+    icon: 'info',
     description:
-      'Experimental self-improving AI Agent built from scratch featuring a cognitive lifecycle (Plan, Act, Observe, Reflect) and self-healing memory architecture. Note: This is an MVP/Demo project created strictly for educational purposes.',
-    tags: ['Python', 'Agentic AI', 'LLMs'],
+      'A comprehensive knowledge base and information aggregator application. Built with advanced data retrieval and organization capabilities to serve as a centralized hub for critical information.',
+    tags: ['React', 'Information Management', 'Tailwind'],
     image:
-      'https://www.computerworld.com/wp-content/uploads/2025/11/3846150-0-19220000-1762336686-shutterstock_2577839733.jpg?quality=50&strip=all',
+      'https://raw.githubusercontent.com/Dzakiudin/Perpusstakaan-Informasi-APP/refs/heads/main/docs/dashboard.png',
     imageAlt:
-      'Futuristic artificial intelligence interface showing cognitive processing and neural network activity',
+      'Futuristic information hub interface showing data nodes and knowledge mapping',
+    link: 'https://github.com/Dzakiudin/Perpusstakaan-Informasi-APP',
   },
 ];
 
@@ -45,9 +48,12 @@ function ProjectCard({ project }) {
   const tiltRef = useTilt(5);
 
   return (
-    <div
+    <a
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
       ref={tiltRef}
-      className="project-card tilt-card bg-surface-container-lowest rounded-3xl overflow-hidden border border-outline-variant/10"
+      className="project-card tilt-card bg-surface-container-lowest rounded-3xl overflow-hidden border border-outline-variant/10 block hover:border-primary/30 transition-colors"
     >
       <div className="h-48 overflow-hidden">
         <img
@@ -79,7 +85,7 @@ function ProjectCard({ project }) {
           ))}
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 
