@@ -23,6 +23,7 @@ export function useLenis() {
     });
 
     lenisRef.current = lenis;
+    window.__lenis = lenis;
 
     // Sync Lenis → GSAP ScrollTrigger (frame-perfect)
     lenis.on('scroll', ScrollTrigger.update);
