@@ -1,0 +1,2378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23122418'/%3E%3Cpath d='M18 44 C18 26 34 18 48 20 C46 34 38 46 18 44 Z' fill='%232E9E49' opacity='0.35'/%3E%3Ctext x='32' y='42' font-family='serif' font-size='27' font-weight='700' fill='%23EEF6E8' text-anchor='middle'%3EAD%3C/text%3E%3C/svg%3E" />
+  <title>Ahmad Dzakiudin — Full-Stack Developer &amp; AI System Builder</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-cream: #EEF6E8;
+      --bg-card: #FCFDFB;
+      --bg-pill: #DFEFE0;
+      --text-dark: #122418;
+      --text-body: #324B3A;
+      --text-muted: #5C7864;
+      --accent-rust: #1E7E3A;
+      --accent-leaf: #2E9E49;
+      --accent-sky: #1B76B5;
+      --accent-gold: #D97706;
+      --border-warm: rgba(18, 36, 24, 0.09);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      border-color: var(--border-warm);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      background-color: var(--bg-cream);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(167, 232, 189, 0.45), transparent 70%),
+        radial-gradient(rgba(30, 126, 58, 0.13) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Subtle watercolor paper grain overlay */
+    .ghibli-paper-grain {
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(167, 232, 189, 0.45), transparent 70%),
+        radial-gradient(rgba(30, 126, 58, 0.13) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px;
+    }
+
+    /* Hardware GPU Compositor Promotion */
+    .gpu-layer {
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      will-change: transform;
+    }
+
+    .gpu-fade {
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      will-change: transform, opacity;
+    }
+
+    /* Unified layout container with generous horizontal padding across all viewports */
+    .section-shell {
+      width: 100%;
+      max-width: 1340px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: clamp(1.25rem, 4.5vw, 3.75rem);
+      padding-right: clamp(1.25rem, 4.5vw, 3.75rem);
+    }
+
+    .font-display-serif {
+      font-family: 'Fraunces', 'Plus Jakarta Sans', Georgia, serif;
+      letter-spacing: -0.025em;
+    }
+
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Floating Pill Header */
+    #main-header {
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #main-header.header-fullscreen-mode {
+      opacity: 0.16;
+      transform: translate3d(0, -6px, 0);
+    }
+    #main-header.header-fullscreen-mode:hover {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .floating-pill {
+      background: rgba(250, 253, 248, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 28px -6px rgba(18, 36, 24, 0.12), 0 0 0 1px rgba(30, 126, 58, 0.08);
+    }
+
+    /* Botanical Handcrafted Cards with smooth 3D magnetic tilt */
+    .work-card {
+      position: relative;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FBF6 100%);
+      border-radius: 28px;
+      border: 1px solid rgba(18, 36, 24, 0.08);
+      box-shadow: 0 16px 38px -12px rgba(18, 36, 24, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.38s ease, box-shadow 0.38s ease;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      will-change: transform;
+    }
+    .work-card:hover {
+      border-color: rgba(30, 126, 58, 0.28);
+      box-shadow: 0 26px 52px -12px rgba(18, 36, 24, 0.16), 0 0 0 1px rgba(46, 158, 73, 0.14);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Giant outlined watermark year behind "The path so far" */
+    .watermark-year {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      font-size: clamp(6.5rem, 17vw, 14.5rem);
+      line-height: 0.82;
+      letter-spacing: -0.04em;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(30, 126, 58, 0.17);
+      user-select: none;
+      pointer-events: none;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+    }
+
+    /* Smooth organic floating callout pills */
+    @keyframes gentleBob {
+      0%, 100% { transform: translate3d(0, 0px, 0) rotate(0deg); }
+      50% { transform: translate3d(0, -6px, 0) rotate(0.6deg); }
+    }
+    .floating-badge {
+      animation: gentleBob 4.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+      background: rgba(255, 255, 255, 0.97);
+      border: 1px solid rgba(18, 36, 24, 0.1);
+      box-shadow: 0 12px 26px -6px rgba(18, 36, 24, 0.13);
+      backface-visibility: hidden;
+      will-change: transform;
+    }
+
+    /* Floating Dandelion Seeds & Sketched Paper Plane in Hero */
+    @keyframes floatSeed {
+      0%, 100% { transform: translate3d(0px, 0px, 0) rotate(0deg); }
+      50% { transform: translate3d(12px, -14px, 0) rotate(7deg); }
+    }
+    .dandelion-seed {
+      animation: floatSeed 5.5s ease-in-out infinite;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    /* Animated Wind Ribbons */
+    @keyframes windRibbon {
+      0% { stroke-dashoffset: 320; opacity: 0; }
+      30% { opacity: 0.65; }
+      70% { opacity: 0.65; }
+      100% { stroke-dashoffset: 0; opacity: 0; }
+    }
+    .ghibli-wind-path {
+      stroke-dasharray: 110 210;
+      animation: windRibbon 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Barbell Plate Slide-In Spring Animation (from outer sleeve tip inward!) */
+    @keyframes slideFromLeftTip {
+      0% { transform: translate3d(-18px, 0, 0) scaleY(0.84); opacity: 0; }
+      65% { transform: translate3d(2px, 0, 0) scaleY(1.04); opacity: 1; }
+      100% { transform: translate3d(0, 0, 0) scaleY(1); opacity: 1; }
+    }
+    @keyframes slideFromRightTip {
+      0% { transform: translate3d(18px, 0, 0) scaleY(0.84); opacity: 0; }
+      65% { transform: translate3d(-2px, 0, 0) scaleY(1.04); opacity: 1; }
+      100% { transform: translate3d(0, 0, 0) scaleY(1); opacity: 1; }
+    }
+    .plate-anim-left {
+      transform-origin: center;
+      animation: slideFromLeftTip 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .plate-anim-right {
+      transform-origin: center;
+      animation: slideFromRightTip 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes barBounce {
+      0% { transform: translate3d(0, 0, 0); }
+      35% { transform: translate3d(0, 3.5px, 0); }
+      70% { transform: translate3d(0, -1.5px, 0); }
+      100% { transform: translate3d(0, 0, 0); }
+    }
+    .bar-loaded-bounce {
+      animation: barBounce 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Scroll reveal animations */
+    .reveal-up {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0);
+      transition: opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1), transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+    .reveal-up.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    /* Short-Viewport (e.g. 1366x768) Responsive Fit Adjustments */
+    @media (max-height: 770px) {
+      .work-card-thumb {
+        height: 11.5rem !important;
+        margin-bottom: 1rem !important;
+      }
+      .work-card-pad {
+        padding: 1.15rem !important;
+      }
+      .sticky-section-pad {
+        padding-top: 4.5rem !important;
+        padding-bottom: 1.25rem !important;
+      }
+    }
+  </style>
+</head>
+<body id="n" class="ghibli-paper-grain min-h-screen flex flex-col selection:bg-emerald-700 selection:text-white">
+
+  <!-- =========================================================================
+       FLOATING TOP PILL HEADER (GENEROUS BREATHING ROOM & RESPONSIVE FIT)
+       ========================================================================= -->
+  <header id="main-header" class="fixed top-4 sm:top-6 inset-x-0 z-50 pointer-events-none gpu-fade">
+    <div class="section-shell flex items-center justify-between gap-3">
+      
+      <!-- Left Floating Pill: Avatar + Name + Subtitle -->
+      <a href="#hero-stage" class="floating-pill pointer-events-auto pl-2 pr-4 sm:pl-2.5 sm:pr-5 py-1.5 sm:py-2 rounded-full flex items-center gap-2.5 sm:gap-3 hover:scale-[1.02] transition-transform shrink-0">
+        <img
+          src="assets/me.png"
+          alt="Ahmad Dzakiudin"
+          class="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-emerald-800/25"
+        />
+        <div class="leading-tight">
+          <div class="text-xs sm:text-[13.5px] font-bold tracking-tight" style="color: var(--text-dark);">Ahmad Dzakiudin</div>
+          <div class="text-[10px] sm:text-[11px] hidden sm:flex items-center gap-1.5 mt-0.5" style="color: var(--text-muted);">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 inline-block"></span>
+            <span>Full-stack &amp; AI engineer</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Right Floating Pill: Work · Path · About · Contact · Chimes · CV -->
+      <nav class="floating-pill pointer-events-auto px-2 sm:px-3.5 py-1.5 sm:py-2 rounded-full flex items-center gap-1 sm:gap-2 text-xs font-medium overflow-x-auto no-scrollbar" style="color: var(--text-body);">
+        <a href="#work" class="px-2.5 sm:px-3.5 py-1 rounded-full hover:bg-emerald-950/5 transition-colors whitespace-nowrap">Work</a>
+        <a href="#path" class="px-2.5 sm:px-3.5 py-1 rounded-full hover:bg-emerald-950/5 transition-colors whitespace-nowrap">Path</a>
+        <a href="#about" class="px-2.5 sm:px-3.5 py-1 rounded-full hover:bg-emerald-950/5 transition-colors whitespace-nowrap">About</a>
+        <a href="#contact" class="px-2.5 sm:px-3.5 py-1 rounded-full hover:bg-emerald-950/5 transition-colors whitespace-nowrap">Contact</a>
+        <button id="btn-meadow-sound" type="button" title="Play Studio Ghibli meadow wind chimes" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 transition-colors cursor-pointer font-semibold flex items-center gap-1.5 border border-emerald-700/15 shrink-0">
+          <span id="meadow-sound-icon">🍃</span>
+          <span class="hidden md:inline text-[11px]">Chimes</span>
+        </button>
+        <button id="btn-header-cv" type="button" class="px-3 sm:px-3.5 py-1 rounded-full bg-[#122418] text-white hover:bg-emerald-900 transition-colors cursor-pointer font-semibold shrink-0">CV</button>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- =======================================================================
+         00:00 – 00:04: STICKY SCROLL-INTO-THE-LAPTOP GHIBLI GREEN MEADOW HERO
+         ======================================================================= -->
+    <section id="hero-stage" class="relative h-[235vh]">
+      <div class="sticky-section-pad sticky top-0 h-screen min-h-[100dvh] w-full overflow-hidden flex flex-col items-center justify-between pt-24 sm:pt-28 pb-7 sm:pb-9 px-4 sm:px-8">
+        
+        <!-- Zooming Ghibli Green Meadow Desk Background Layer -->
+        <div id="hero-zoom-scene" class="absolute inset-0 w-full h-full gpu-layer" style="transform-origin: 50% 58%;">
+          <div id="hero-parallax-layer" class="relative w-full h-full gpu-layer scale-[1.05]">
+            <img
+              src="assets/bg.png"
+              alt="Studio Ghibli Green Meadow Desk Illustration"
+              class="w-full h-full object-cover object-[50%_62%] select-none"
+              decoding="async"
+            />
+            <!-- Soft top sky mist so headline is ultra-legible while keeping the desk & meadow clear below -->
+            <div class="absolute inset-0 bg-gradient-to-b from-white/80 via-white/10 to-emerald-950/25 pointer-events-none"></div>
+
+            <!-- Live 60fps Studio Ghibli Breeze, Flapping Butterflies & Pollen Canvas -->
+            <canvas id="hero-meadow-canvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+
+            <!-- Animated Studio Ghibli Wind Currents SVG -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none hidden sm:block" viewBox="0 0 1440 810" fill="none">
+              <path class="ghibli-wind-path" d="M 100,240 C 340,185 520,275 780,210" stroke="rgba(255,255,255,0.75)" stroke-width="1.8" stroke-linecap="round" />
+              <path class="ghibli-wind-path" style="animation-delay: 2.2s;" d="M 760,170 C 980,130 1140,215 1360,155" stroke="rgba(255,255,255,0.68)" stroke-width="1.6" stroke-linecap="round" />
+              <path class="ghibli-wind-path" style="animation-delay: 4.1s;" d="M 60,610 C 290,555 470,635 700,575" stroke="rgba(220,252,231,0.55)" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+
+            <!-- Floating SVG Dandelion Seeds & Gliding Paper Plane Emblem -->
+            <svg class="dandelion-seed absolute left-[16%] top-[24%] w-7 h-7 text-white/90 hidden sm:block" viewBox="0 0 32 32" fill="none">
+              <line x1="16" y1="28" x2="16" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="16" y1="12" x2="9" y2="6" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="16" y1="12" x2="16" y2="4" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="16" y1="12" x2="23" y2="6" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="9" cy="6" r="1.5" fill="currentColor"/>
+              <circle cx="16" cy="4" r="1.5" fill="currentColor"/>
+              <circle cx="23" cy="6" r="1.5" fill="currentColor"/>
+            </svg>
+            <svg class="dandelion-seed absolute right-[17%] top-[20%] w-8 h-8 text-amber-200 drop-shadow hidden sm:block" style="animation-delay: 1.4s;" viewBox="0 0 32 32" fill="none">
+              <path d="M16 16 C9 6, 2 10, 8 18 C4 22, 10 27, 16 19 Z" fill="#FDE68A" stroke="#122418" stroke-width="1.2"/>
+              <path d="M16 16 C23 6, 30 10, 24 18 C28 22, 22 27, 16 19 Z" fill="#FDE68A" stroke="#122418" stroke-width="1.2"/>
+            </svg>
+            <svg class="dandelion-seed absolute left-[28%] top-[39%] w-12 h-12 text-[#122418]/75 hidden sm:block" style="animation-delay: 0.7s;" viewBox="0 0 48 48" fill="none">
+              <path d="M6 22L42 10L28 38L21 26L6 22Z" fill="rgba(255,253,245,0.88)" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M42 10L21 26" stroke="currentColor" stroke-width="1.3"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Centered Editorial Headline & Bio with generous vertical spacing in the upper sky region -->
+        <div id="hero-title-block" class="relative z-20 max-w-3xl mx-auto text-center space-y-3.5 sm:space-y-4 pt-2 sm:pt-4 pointer-events-none gpu-fade">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/88 backdrop-blur-md border border-emerald-900/10 text-[10.5px] sm:text-[11px] font-mono-code text-emerald-900 shadow-2xs">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+            <span>SUMENEP, EAST JAVA · UNIBA MADURA CS · 20+ SHIPPED REPOS</span>
+          </div>
+          <h1 class="font-display-serif text-2xl sm:text-4xl md:text-[3.35rem] font-extrabold tracking-tight leading-[1.08] text-[#102216]" style="text-shadow: 0 2px 24px rgba(255,255,255,0.95), 0 1px 3px rgba(255,255,255,0.9);">
+            I engineer AI systems people can steer, <br class="hidden sm:inline" />at production scale.
+          </h1>
+          <p class="text-xs sm:text-[15px] md:text-base leading-relaxed text-[#1B3323] max-w-2xl mx-auto font-medium px-2" style="text-shadow: 0 1px 14px rgba(255,255,255,0.95);">
+            Full-stack developer with <strong class="font-bold text-[#102216] underline decoration-[#1E7E3A] decoration-2 underline-offset-2">20+ shipped repositories</strong>. Studying Computer Science at <strong class="font-bold text-[#102216]">UNIBA Madura</strong>, prototyping in code, and building <strong class="font-bold text-[#102216]">Google Gemini Pro</strong> &amp; <strong class="font-bold text-[#102216]">PostgreSQL</strong> platforms.
+          </p>
+        </div>
+
+        <!-- Bottom Translucent Botanical Pill -->
+        <div id="hero-bottom-pill" class="relative z-20 gpu-fade">
+          <div class="px-5 py-2.5 rounded-full bg-[#12281A]/82 backdrop-blur-md text-white text-xs flex items-center gap-3 shadow-xl border border-emerald-200/30">
+            <span class="inline-flex items-center gap-2 opacity-95">
+              <svg class="w-3.5 h-3.5 text-emerald-300" viewBox="0 0 16 16" fill="none">
+                <rect x="3.5" y="1.5" width="9" height="13" rx="4.5" stroke="currentColor" stroke-width="1.4"/>
+                <circle cx="8" cy="5.2" r="1" fill="currentColor"/>
+              </svg>
+              <span>Scroll into the laptop</span>
+            </span>
+            <a href="#work" class="text-[#A7F3D0] hover:text-white transition-colors font-semibold">or jump to the work →</a>
+          </div>
+        </div>
+
+        <!-- Sunlit Meadow Mist Flash Overlay when zooming through the laptop screen into Selected Work -->
+        <div id="laptop-white-flash" class="absolute inset-0 bg-[#EEF6E8] pointer-events-none opacity-0 z-30 gpu-fade"></div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         00:05 – 00:06: SELECTED WORK (RESTORED FULL ORGANIC WAVE BOBBING +
+         VELOCITY TILT + DOTTED BREEZE PATH + GENEROUS CARD SPACING)
+         ======================================================================= -->
+    <section id="work" class="relative">
+      
+      <div id="work-scroll-driver" class="relative h-[285vh]">
+        <div class="sticky-section-pad sticky top-0 h-screen min-h-[100dvh] w-full overflow-hidden flex flex-col justify-center pt-24 sm:pt-28 pb-10">
+          
+          <!-- Wavy Dotted Wind Trajectory Line + Flying Paper Plane Behind Cards -->
+          <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[400px] sm:h-[430px] pointer-events-none z-0 overflow-hidden">
+            <svg id="work-wave-svg" viewBox="0 0 1600 420" preserveAspectRatio="none" class="w-full h-full">
+              <path
+                id="work-wave-bg"
+                d="M -40,330 C 180,40 340,40 520,230 C 700,410 860,410 1040,210 C 1220,20 1380,40 1640,290"
+                fill="none"
+                stroke="rgba(30, 126, 58, 0.2)"
+                stroke-width="2"
+                stroke-dasharray="4 8"
+              />
+              <path
+                id="work-wave-active"
+                d="M -40,330 C 180,40 340,40 520,230 C 700,410 860,410 1040,210 C 1220,20 1380,40 1640,290"
+                fill="none"
+                stroke="#1E7E3A"
+                stroke-width="2.8"
+                stroke-dasharray="6 8"
+                stroke-linecap="round"
+              />
+              <g id="work-wave-plane" transform="translate(120, 140) rotate(-25)">
+                <polygon points="20,0 -13,-11 -7,0 -13,11" fill="#FEF08A" stroke="#122418" stroke-width="1.6" stroke-linejoin="round" />
+                <line x1="20" y1="0" x2="-7" y2="0" stroke="#122418" stroke-width="1.3" />
+              </g>
+            </svg>
+          </div>
+
+          <div class="section-shell relative z-10">
+            <!-- Header Row with Generous Bottom Margin -->
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-7 sm:mb-10">
+              <div>
+                <div class="text-[11px] font-mono-code uppercase tracking-wider text-emerald-800 font-semibold mb-1.5">Production Engineering &amp; AI Systems</div>
+                <h2 class="font-display-serif text-3xl sm:text-5xl font-extrabold tracking-tight" style="color: var(--text-dark);">
+                  Selected work
+                </h2>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-xs sm:text-sm font-medium" style="color: var(--text-muted);">Four flagship systems, newest first · Scroll to glide</span>
+                <div class="sr-only" aria-hidden="true">
+                  <button id="btn-work-prev" type="button">←</button>
+                  <button id="btn-work-next" type="button">→</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scroll-Driven Horizontal Cards Track with Generous Gap -->
+            <div class="overflow-visible py-2">
+              <div id="selected-work-track" class="flex gap-6 sm:gap-8 lg:gap-9 gpu-layer"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           00:06: "ALSO ON THE DESK" (SPACIOUS GRID, NEVER CRAMPED)
+           ===================================================================== -->
+      <div id="also-on-desk" class="py-24 sm:py-32 section-shell">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-14 reveal-up">
+          <div>
+            <div class="text-[11px] font-mono-code uppercase tracking-wider text-emerald-800 font-semibold mb-1.5">Field Notes &amp; Public Sector IT</div>
+            <h3 class="font-display-serif text-3xl sm:text-5xl font-extrabold tracking-tight" style="color: var(--text-dark);">
+              Also on the desk
+            </h3>
+          </div>
+          <p class="text-xs sm:text-sm max-w-md sm:text-right leading-relaxed" style="color: var(--text-muted);">
+            A fuzzy-search knowledge hub, legislative IT operations at DPRD Sumenep, BPN archive digitization, and hardware diagnostics.
+          </p>
+        </div>
+
+        <div id="also-desk-row" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-7"></div>
+      </div>
+
+    </section>
+
+    <!-- =======================================================================
+         00:07 – 00:10: "THE PATH SO FAR" (SCROLL-DRIVEN HORIZONTAL TIMELINE
+         WITH RESTORED ORGANIC CARD BOBBING & GENEROUS MILESTONE SPACING)
+         ======================================================================= -->
+    <section id="path" class="relative">
+      <div id="path-scroll-driver" class="relative h-[380vh]">
+        <div class="sticky-section-pad sticky top-0 h-screen min-h-[100dvh] w-full overflow-hidden flex flex-col justify-between pt-24 sm:pt-28 pb-8 sm:pb-12">
+          
+          <!-- Section Header -->
+          <div class="section-shell relative z-20">
+            <div class="text-[11px] font-mono-code uppercase tracking-wider text-emerald-800 font-semibold mb-1.5">Chronology · 2019 — 2026</div>
+            <h2 class="font-display-serif text-3xl sm:text-5xl font-extrabold tracking-tight" style="color: var(--text-dark);">
+              The path so far
+            </h2>
+            <p class="text-xs sm:text-sm mt-2 leading-relaxed" style="color: var(--text-muted);">
+              Newest first. Seven years of building &amp; troubleshooting systems, from SMKN 1 Sumenep to UNIBA Madura.
+            </p>
+          </div>
+
+          <!-- Horizontal Panorama Track with Spacious Gaps -->
+          <div class="relative flex-grow flex items-center w-full my-auto overflow-visible">
+            <div id="path-stage-container" class="relative w-full overflow-visible">
+              <div id="path-horizontal-track" class="flex items-center gap-16 sm:gap-28 lg:gap-36 px-6 sm:px-[9vw] gpu-layer relative"></div>
+            </div>
+          </div>
+
+          <!-- Bottom Interactive Year Scrubber Pill -->
+          <div class="section-shell relative z-20 flex justify-center pt-2">
+            <div class="floating-pill px-6 sm:px-11 py-3 sm:py-4 rounded-full inline-flex items-center relative max-w-full">
+              <div class="absolute left-8 right-8 top-[18px] sm:top-[21px] border-t-2 border-dotted border-emerald-800/25 z-0"></div>
+              <div id="path-scrubber-progress" class="absolute left-8 top-[18px] sm:top-[21px] h-[2px] bg-[#1E7E3A] z-0" style="width: 0px;"></div>
+              <div id="path-scrubber-nodes" class="relative z-10 flex items-center gap-7 sm:gap-16 md:gap-20"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         00:10 – 00:12: ABOUT SECTION
+         (Generous padding & column gaps; Portrait Trait Pills sit in a spacious
+          floating 2x2 grid below the arch photo so ZERO text ever covers the photo
+          or crowds neighboring elements!)
+         ======================================================================= -->
+    <section id="about" class="py-24 sm:py-32 lg:py-36 section-shell">
+      
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 items-start">
+        
+        <!-- Left 5 Cols: Kudos Catcher + Unobstructed Illustrated Arch Portrait + Spacious 2x2 Floating Trait Pills -->
+        <div class="lg:col-span-5 relative flex flex-col items-center reveal-up">
+          
+          <!-- "Catch a kudos •••••" Interactive Pill at Top -->
+          <div class="mb-5">
+            <button id="btn-catch-kudos" type="button" class="floating-badge px-5 py-2.5 rounded-full text-xs font-bold flex items-center gap-3 cursor-pointer hover:scale-105 transition-transform">
+              <span>Catch a kudos</span>
+              <span id="kudos-dots-group" class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-[#1E7E3A]"></span>
+                <span class="w-2 h-2 rounded-full bg-emerald-950/20"></span>
+                <span class="w-2 h-2 rounded-full bg-emerald-950/20"></span>
+                <span class="w-2 h-2 rounded-full bg-emerald-950/20"></span>
+                <span class="w-2 h-2 rounded-full bg-emerald-950/20"></span>
+              </span>
+              <span class="sr-only">✦</span>
+              <span id="kudos-count-badge" class="font-mono-code text-[10.5px] px-2.5 py-0.5 rounded-full bg-emerald-100 text-[#1E7E3A] font-semibold">1/5</span>
+            </button>
+          </div>
+
+          <!-- Popover Kudos Quote Card with Comfortable Padding -->
+          <div id="kudos-popover" class="w-full max-w-[400px] mb-7 p-5 sm:p-6 rounded-3xl bg-white/95 border border-emerald-900/10 shadow-sm text-xs sm:text-[13px] leading-relaxed transition-all duration-300" style="color: var(--text-body);">
+            <p id="kudos-quote-text" class="italic font-medium text-[#122418]">
+              &ldquo;Ahmad automated our entire culinary Cost of Goods Sold (HPP) calculation with Gemini AI—turning hours of spreadsheet work into 30 seconds.&rdquo;
+            </p>
+            <div id="kudos-quote-author" class="font-mono-code text-[10.5px] mt-2.5" style="color: var(--text-muted);">
+              — Culinary SME Partner · Automatic HPP Calculator
+            </div>
+          </div>
+
+          <!-- Illustrated Ghibli Meadow Arch Portrait (100% Clean & Unobstructed!) -->
+          <div class="relative w-full max-w-[330px] sm:max-w-[350px] mx-auto my-2">
+            <!-- Decorative Floating Leaf / Quote Bubble at Top Arch Rim -->
+            <div class="floating-badge absolute -top-3 right-8 px-3 py-1.5 rounded-2xl bg-[#DCFCE7] text-[#1E7E3A] text-xs font-bold shadow-md select-none z-20" style="animation-delay: 0.3s;">
+              🍃 &ldquo; &rdquo;
+            </div>
+
+            <!-- Arch Frame -->
+            <div class="rounded-t-[180px] rounded-b-3xl overflow-hidden border-[5px] border-white shadow-2xl bg-[#DFEFE0]">
+              <img
+                src="assets/me.png"
+                alt="Ahmad Dzakiudin Studio Ghibli Meadow Portrait"
+                class="w-full aspect-[3/4] block object-cover object-top hover:scale-105 transition-transform duration-700"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- 4 Interactive Trait Pills in a Spacious 2x2 Floating Grid Below the Portrait
+               (Never covers the portrait photo, never truncates text, and never crowds adjacent columns!) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-7 w-full max-w-[420px]">
+            <button type="button" data-trait="detail" class="trait-pill floating-badge px-4 py-3 rounded-2xl text-xs font-semibold flex items-center gap-3 cursor-pointer hover:scale-[1.03] transition-transform text-left">
+              <span class="w-6 h-6 rounded-full bg-[#1E7E3A] text-white flex items-center justify-center text-[11px] font-bold shrink-0">D</span>
+              <span class="leading-snug">Keen eye for detail</span>
+            </button>
+
+            <button type="button" data-trait="systems" class="trait-pill floating-badge px-4 py-3 rounded-2xl text-xs font-semibold flex items-center gap-3 cursor-pointer hover:scale-[1.03] transition-transform text-left" style="animation-delay: 0.7s;">
+              <span class="w-6 h-6 rounded-full bg-[#1B76B5] text-white flex items-center justify-center text-[11px] font-bold shrink-0">A</span>
+              <span class="leading-snug">Systems builder by training</span>
+            </button>
+
+            <button type="button" data-trait="code" class="trait-pill floating-badge px-4 py-3 rounded-2xl text-xs font-semibold flex items-center gap-3 cursor-pointer hover:scale-[1.03] transition-transform text-left" style="animation-delay: 1.3s;">
+              <span class="w-6 h-6 rounded-full bg-[#D97706] text-white flex items-center justify-center text-[11px] font-bold shrink-0">B</span>
+              <span class="leading-snug">Prototypes in code</span>
+            </button>
+
+            <button type="button" data-trait="hardware" class="trait-pill floating-badge px-4 py-3 rounded-2xl text-xs font-semibold flex items-center gap-3 cursor-pointer hover:scale-[1.03] transition-transform text-left" style="animation-delay: 1.9s;">
+              <span class="w-6 h-6 rounded-full bg-[#1E7E3A] text-white flex items-center justify-center text-[11px] font-bold shrink-0">C</span>
+              <span class="leading-snug">Hardware troubleshooter</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right 7 Cols: Bold Headline + Narrative Paragraphs + 3 Stat Cards + Skill Pills + Barbell Widget -->
+        <div class="lg:col-span-7 space-y-7 sm:space-y-8 reveal-up">
+          
+          <div class="space-y-3">
+            <div class="text-[11px] font-mono-code uppercase tracking-wider text-emerald-800 font-semibold">Engineering Philosophy &amp; Craft</div>
+            <h2 class="font-display-serif text-2xl sm:text-3xl lg:text-[2.45rem] font-extrabold leading-[1.18] tracking-tight" style="color: var(--text-dark);">
+              I started in hardware &amp; networks, so I design in systems, and I prototype in code because the real thing teaches more than a mockup.
+            </h2>
+          </div>
+
+          <div class="space-y-4 text-sm sm:text-[15.5px] leading-relaxed" style="color: var(--text-body);">
+            <p>
+              My work lives where businesses and users need deterministic control: AI that calculates multi-tier production costs with you, retail POS checkouts that never drop a ledger entry, and digital document libraries that work offline. I like messy operational problems, talking to users early, and shipping real repositories.
+            </p>
+            <p>
+              I start from &ldquo;this can be automated&rdquo; and work out the how on the way. Like wind across a green valley, I find a path and keep moving: a cross-platform Gemini Pro cost calculator, a PostgreSQL stock mutation ledger, or 20+ open-source repositories built from Sumenep, East Java.
+            </p>
+          </div>
+
+          <!-- 3 Big Botanical Stat Cards with Generous Padding & Gap -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 pt-1">
+            <div class="work-card p-5 sm:p-6">
+              <div class="font-display-serif text-3xl sm:text-4xl font-extrabold" style="color: var(--accent-rust);">7+</div>
+              <div class="text-xs sm:text-[13px] mt-2.5 leading-relaxed" style="color: var(--text-body);">years troubleshooting hardware &amp; shipping software</div>
+            </div>
+            <div class="work-card p-5 sm:p-6 relative" style="background: linear-gradient(180deg, #E6F7EB 0%, #D8F2E0 100%); border-color: rgba(30, 126, 58, 0.28);">
+              <span class="absolute top-4 right-4 w-7 h-7 rounded-full bg-[#1E7E3A] text-white flex items-center justify-center text-xs font-bold">★</span>
+              <div class="font-display-serif text-2xl sm:text-[1.6rem] font-extrabold leading-tight pr-7" style="color: var(--accent-rust);">Gemini AI engine</div>
+              <div class="text-xs sm:text-[13px] mt-2.5 leading-relaxed" style="color: var(--text-body);">Automated COGS / HPP derivative calculator across Android, iOS &amp; Web.</div>
+            </div>
+            <div class="work-card p-5 sm:p-6 relative">
+              <span class="absolute top-4 right-4 text-xs font-bold" style="color: var(--accent-rust);">→</span>
+              <div class="font-display-serif text-3xl sm:text-4xl font-extrabold" style="color: var(--accent-rust);">50k+</div>
+              <div class="text-xs sm:text-[13px] mt-2.5 leading-relaxed" style="color: var(--text-body);">daily transactions supported on PostgreSQL + Prisma ledgers</div>
+            </div>
+          </div>
+
+          <!-- 2 Rows of Outlined Capability Pills with Comfortable Gap -->
+          <div class="flex flex-wrap gap-2.5 sm:gap-3 pt-1">
+            <span class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-emerald-900/10 shadow-2xs">TypeScript &amp; JavaScript</span>
+            <span class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-emerald-900/10 shadow-2xs">React &amp; Next.js 14</span>
+            <span class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-emerald-900/10 shadow-2xs">Google Gemini Pro AI</span>
+            <span class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-emerald-900/10 shadow-2xs">PostgreSQL &amp; Prisma</span>
+            <span class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-emerald-900/10 shadow-2xs">Node.js &amp; Express</span>
+            <span class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-emerald-900/10 shadow-2xs">Python &amp; FastAPI</span>
+            <span class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-emerald-900/10 shadow-2xs">Capacitor Mobile</span>
+            <span class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-emerald-900/10 shadow-2xs">Coded prototypes</span>
+          </div>
+
+          <!-- "Off screen, I tune systems & lift" Interactive Barbell Card -->
+          <div class="work-card p-6 sm:p-7 grid sm:grid-cols-12 gap-6 sm:gap-7 items-center" style="background: #F4FAF0;">
+            
+            <!-- Left 5 Cols: Barbell SVG on Squat Rack -->
+            <div id="barbell-rack-click" class="sm:col-span-5 flex flex-col items-center justify-center p-4 rounded-2xl bg-[#E3F1DF] cursor-pointer select-none hover:scale-[1.02] transition-transform border border-emerald-800/10" title="Tap to load another plate on the bar">
+              <svg id="barbell-svg-root" viewBox="0 0 220 90" class="w-full h-22">
+                <circle cx="38" cy="40" r="25" fill="none" stroke="rgba(30,126,58,0.32)" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <circle cx="182" cy="40" r="25" fill="none" stroke="rgba(30,126,58,0.32)" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <!-- Squat Rack Uprights -->
+                <line x1="66" y1="14" x2="66" y2="82" stroke="#5C7864" stroke-width="3.5" stroke-linecap="round" />
+                <line x1="54" y1="82" x2="78" y2="82" stroke="#5C7864" stroke-width="3.5" stroke-linecap="round" />
+                <line x1="154" y1="14" x2="154" y2="82" stroke="#5C7864" stroke-width="3.5" stroke-linecap="round" />
+                <line x1="142" y1="82" x2="166" y2="82" stroke="#5C7864" stroke-width="3.5" stroke-linecap="round" />
+                <!-- Barbell Shaft + Inner Collars -->
+                <g id="barbell-assembly-group">
+                  <rect x="8" y="38" width="204" height="4.5" rx="2.25" fill="#122418" />
+                  <rect x="57" y="34" width="3.5" height="12.5" rx="1" fill="#324B3A" />
+                  <rect x="159.5" y="34" width="3.5" height="12.5" rx="1" fill="#324B3A" />
+                  <!-- Dynamic Plates (Biggest plate on inside against collar, smallest plate at outer tip) -->
+                  <g id="barbell-plates-svg"></g>
+                </g>
+              </svg>
+              <span id="barbell-weight-label" class="font-mono-code text-[10.5px] text-[#1E7E3A] font-semibold mt-2">Tap bar to load rep (1/5)</span>
+            </div>
+
+            <!-- Right 7 Cols: Title + Copy + Listen / Sketch / Prototype / Test / Lift -->
+            <div class="sm:col-span-7 space-y-3">
+              <h3 class="font-display-serif text-lg sm:text-xl font-extrabold" style="color: var(--text-dark);">
+                Off screen, I tune systems &amp; lift
+              </h3>
+              <p class="text-xs sm:text-[13px] leading-relaxed" style="color: var(--text-body);">
+                Trained in hardware troubleshooting since 2019. It runs on the same rule as software architecture: heavy core plates on the inside, precision increments on the outside. <strong>Tap to load it.</strong>
+              </p>
+              <div class="flex flex-wrap gap-2 pt-1.5">
+                <button type="button" data-lift-step="0" class="lift-step-btn px-3.5 py-1.5 rounded-full text-[11px] font-semibold border bg-[#122418] text-white cursor-pointer transition-colors">Listen</button>
+                <button type="button" data-lift-step="1" class="lift-step-btn px-3.5 py-1.5 rounded-full text-[11px] font-semibold border bg-white text-[#324B3A] cursor-pointer transition-colors">Sketch</button>
+                <button type="button" data-lift-step="2" class="lift-step-btn px-3.5 py-1.5 rounded-full text-[11px] font-semibold border bg-white text-[#324B3A] cursor-pointer transition-colors">Prototype</button>
+                <button type="button" data-lift-step="3" class="lift-step-btn px-3.5 py-1.5 rounded-full text-[11px] font-semibold border bg-white text-[#324B3A] cursor-pointer transition-colors">Test</button>
+                <button type="button" data-lift-step="4" class="lift-step-btn px-3.5 py-1.5 rounded-full text-[11px] font-semibold border bg-white text-[#324B3A] cursor-pointer transition-colors">Lift</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================================
+         00:12 – 00:20: "SEND ME A PAPER PLANE." TRUE 100DVH FULL-SCREEN STAGE
+         (Spacious top/bottom breathing room & GPU sprite fireflies)
+         ======================================================================= -->
+    <section id="contact" class="relative h-screen min-h-[100dvh] max-h-screen w-full overflow-hidden flex flex-col justify-between pt-20 sm:pt-24 pb-6 sm:pb-8 text-white select-none">
+      
+      <!-- Studio Ghibli Twilight Emerald Meadow + Glowing Fireflies + Crescent Moon Background -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="assets/mlm.png"
+          alt="Studio Ghibli Starry Twilight over Green Wildflower Meadow"
+          class="w-full h-full object-cover object-center select-none scale-[1.02]"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-[#071A1E]/45 via-transparent to-[#071D15]/80 pointer-events-none"></div>
+      </div>
+
+      <!-- Top Left Content: "Send me a paper plane." + 3 Numbered Pills + Throws Badge on Right -->
+      <div class="section-shell relative z-20 flex flex-row items-start justify-between gap-4 pointer-events-none">
+        <div class="space-y-3 sm:space-y-4 max-w-xl pointer-events-auto">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 backdrop-blur-md border border-emerald-300/25 text-[10px] sm:text-[11px] font-mono-code text-emerald-200">
+            <span class="w-2 h-2 rounded-full bg-lime-300 animate-pulse"></span>
+            <span>FULL-SCREEN TWILIGHT MEADOW · SUMENEP, ID</span>
+          </div>
+          <h2 class="font-display-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white drop-shadow-md leading-[1.05]">
+            Send me a <br class="hidden sm:inline" />paper plane.
+          </h2>
+          <p class="text-xs sm:text-sm text-white/90 leading-relaxed max-w-md">
+            Write to me at <a href="mailto:dzakiudin07@gmail.com" class="underline font-bold text-emerald-200 hover:text-white">dzakiudin07@gmail.com</a>. Or pull the plane back across the firefly meadow and land it in the mailbox.
+          </p>
+          <div class="flex flex-wrap items-center gap-2 sm:gap-2.5 pt-1 text-xs">
+            <span id="plane-step-1" class="px-3.5 py-1.5 rounded-full bg-white text-stone-900 font-bold flex items-center gap-1.5 shadow transition-all">
+              <span class="w-4 h-4 rounded-full bg-[#1E7E3A] text-white text-[10px] flex items-center justify-center font-bold">1</span>
+              <span>Pull back</span>
+            </span>
+            <span id="plane-step-2" class="px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md text-white border border-white/20 flex items-center gap-1.5 transition-all">
+              <span class="w-4 h-4 rounded-full bg-white/25 text-white text-[10px] flex items-center justify-center font-bold">2</span>
+              <span>Aim at the mailbox</span>
+            </span>
+            <span id="plane-step-3" class="px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md text-white border border-white/20 flex items-center gap-1.5 transition-all">
+              <span class="w-4 h-4 rounded-full bg-white/25 text-white text-[10px] flex items-center justify-center font-bold">3</span>
+              <span>Let go</span>
+            </span>
+            <button id="btn-auto-throw-night" type="button" class="px-4 py-1.5 rounded-full bg-[#1E7E3A] hover:bg-[#16652d] text-white font-semibold cursor-pointer shadow transition-transform hover:scale-105 border border-emerald-300/30">
+              Auto-throw ✈️
+            </button>
+          </div>
+        </div>
+
+        <!-- Top Right: Throws Counter Pill -->
+        <div class="pointer-events-auto shrink-0">
+          <span class="px-4 py-1.5 rounded-full bg-white/92 backdrop-blur-md text-xs font-bold text-[#122418] shadow-lg">
+            Throws <strong id="night-throws-count" class="text-[#1E7E3A]">0</strong>
+          </span>
+        </div>
+      </div>
+
+      <!-- Full-Section Interactive Slingshot, Fireflies & Mailbox Canvas -->
+      <canvas id="night-plane-canvas" class="absolute inset-0 w-full h-full z-10 cursor-grab active:cursor-grabbing" style="touch-action: none;"></canvas>
+
+      <!-- Centered "Delivered across the meadow." Modal Card -->
+      <div id="delivered-stars-card" class="hidden relative z-30 max-w-md w-[90%] mx-auto my-auto p-6 sm:p-8 rounded-3xl bg-[#F6FBF3] text-[#122418] shadow-2xl border border-emerald-500/30 text-center space-y-4">
+        <div class="w-10 h-10 rounded-full bg-emerald-100 text-[#1E7E3A] flex items-center justify-center mx-auto text-lg font-bold">
+          ✈️
+        </div>
+        <h3 id="delivered-card-title" class="font-display-serif text-2xl sm:text-3xl font-extrabold text-[#122418]">
+          Delivered across the meadow.
+        </h3>
+        <p id="delivered-card-sub" class="text-xs sm:text-sm text-[#324B3A]">
+          Write to me at <strong>dzakiudin07@gmail.com</strong>
+        </p>
+        <div class="flex items-center justify-center gap-3 pt-2">
+          <a href="mailto:dzakiudin07@gmail.com" class="px-5 py-2.5 rounded-full bg-[#1E7E3A] hover:bg-[#16652d] text-white text-xs font-bold shadow">
+            Write to me
+          </a>
+          <button id="btn-throw-another-night" type="button" class="px-5 py-2.5 rounded-full bg-[#DFEFE0] hover:bg-[#cde5cf] text-[#122418] text-xs font-bold cursor-pointer">
+            Throw another
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Centered Pill Bar -->
+      <div class="section-shell relative z-20 text-center space-y-2.5 pointer-events-none">
+        <div class="inline-flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 p-1.5 sm:p-2 rounded-2xl sm:rounded-full bg-[#0D231A]/90 backdrop-blur-md border border-emerald-300/20 shadow-xl pointer-events-auto max-w-full">
+          <span class="px-3.5 py-1.5 rounded-full bg-white text-[#122418] text-xs font-bold flex items-center gap-1.5">
+            <span class="text-[#1E7E3A]">✉️</span>
+            <span class="truncate">dzakiudin07@gmail.com</span>
+          </span>
+          <button id="btn-night-copy" type="button" class="px-3 py-1.5 rounded-full text-xs text-white/90 hover:bg-white/10 cursor-pointer font-semibold">
+            Copy
+          </button>
+          <a href="https://www.linkedin.com/in/ahmad-dzakiudin-30404b344/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full text-xs text-white/90 hover:bg-white/10 font-semibold">
+            LinkedIn
+          </a>
+          <a href="https://github.com/Dzakiudin" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full text-xs text-white/90 hover:bg-white/10 font-semibold">
+            GitHub
+          </a>
+          <button id="btn-night-cv" type="button" class="px-3 py-1.5 rounded-full text-xs text-white/90 hover:bg-white/10 cursor-pointer font-semibold">
+            CV
+          </button>
+        </div>
+
+        <div class="text-[11px] text-white/80 pointer-events-auto">
+          Ahmad Dzakiudin, full-stack developer &amp; AI system builder. Studio Ghibli meadow edition, 2026.
+          <button id="btn-night-psst" type="button" class="underline hover:text-emerald-200 cursor-pointer ml-1">Psst, type hire.</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       CASE STUDY MODAL
+       ========================================================================= -->
+  <div id="case-modal" class="fixed inset-0 z-[90] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-[#F6FBF3] text-[#122418] w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl border border-emerald-900/15 my-8">
+      <div class="relative h-52 sm:h-64 bg-emerald-950">
+        <img id="modal-img" src="" alt="" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0D231A]/80 via-transparent to-transparent"></div>
+        <button id="btn-close-modal" type="button" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/70 hover:bg-black text-white text-sm flex items-center justify-center cursor-pointer">✕</button>
+      </div>
+      <div class="p-6 sm:p-8 space-y-4 max-h-[72vh] overflow-y-auto">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-900/10 pb-3">
+          <div>
+            <div id="modal-org" class="text-xs font-mono-code text-[#1E7E3A] font-semibold"></div>
+            <h3 id="modal-title" class="font-display-serif text-2xl sm:text-3xl font-extrabold mt-0.5"></h3>
+          </div>
+          <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-[#122418] hover:bg-emerald-900 text-white text-xs font-semibold transition-colors">
+            View Repository on GitHub ↗
+          </a>
+        </div>
+        <p id="modal-desc" class="text-xs sm:text-sm leading-relaxed text-[#324B3A]"></p>
+        <div class="p-4 rounded-2xl bg-[#E8F4E5] border border-emerald-800/15 space-y-1.5">
+          <div class="text-[10px] font-mono-code uppercase tracking-wider text-emerald-900 font-bold">System Architecture &amp; Production Pipeline</div>
+          <div id="modal-arch-pipeline" class="font-mono-code text-[11px] text-[#122418] leading-relaxed"></div>
+        </div>
+        <ul id="modal-bullets" class="space-y-2.5 text-xs sm:text-sm text-[#122418] font-medium"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       PORTFOLIO SHORTCUT / CV MODAL
+       ========================================================================= -->
+  <div id="cv-shortcut-modal" class="fixed inset-0 z-[95] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+    <div class="bg-[#F6FBF3] text-[#122418] w-full max-w-md rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xl border border-emerald-900/15">
+      <div class="flex items-center justify-between border-b border-emerald-900/10 pb-3">
+        <span class="text-xs font-mono-code text-[#5C7864]">× Portfolio shortcut &amp; CV</span>
+        <button id="btn-close-cv-modal" type="button" class="w-7 h-7 rounded-full bg-[#DFEFE0] text-xs flex items-center justify-center cursor-pointer">✕</button>
+      </div>
+      <div class="flex items-center gap-3.5">
+        <img src="assets/me.png" alt="Ahmad Dzakiudin" class="w-14 h-14 rounded-2xl object-cover border border-emerald-800/20" />
+        <div>
+          <h3 class="font-display-serif text-2xl font-extrabold">Ahmad Dzakiudin</h3>
+          <p class="text-xs text-[#324B3A]">Full-Stack Developer &amp; AI System Builder · UNIBA Madura</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-2.5 text-center">
+        <div class="p-3 rounded-2xl bg-white border border-emerald-900/10">
+          <div class="font-display-serif text-xl font-extrabold text-[#1E7E3A]">20+</div>
+          <div class="text-[10px] text-[#324B3A] mt-0.5">Shipped Repos</div>
+        </div>
+        <div class="p-3 rounded-2xl bg-white border border-emerald-900/10">
+          <div class="font-display-serif text-xl font-extrabold text-[#1E7E3A]">50k+</div>
+          <div class="text-[10px] text-[#324B3A] mt-0.5">Daily POS Tx</div>
+        </div>
+        <div class="p-3 rounded-2xl bg-white border border-emerald-900/10">
+          <div class="font-display-serif text-xl font-extrabold text-[#1E7E3A]">Gemini</div>
+          <div class="text-[10px] text-[#324B3A] mt-0.5">AI HPP Engine</div>
+        </div>
+      </div>
+      <div class="text-xs space-y-1.5 text-[#324B3A]">
+        <div><strong>Education:</strong> Computer Science, UNIBA Madura (2025–Now) · SMKN 1 Sumenep (2022–2025)</div>
+        <div><strong>Experience:</strong> Freelance Technician (2019–Now) · Sekretariat DPRD Sumenep · BPN</div>
+        <div><strong>Direct Line:</strong> +62 857-0709-1624 · dzakiudin07@gmail.com</div>
+      </div>
+      <div class="pt-2 border-t border-emerald-900/10 flex flex-wrap gap-2">
+        <button id="btn-cv-copy-email" type="button" class="px-4 py-2 rounded-full bg-[#1E7E3A] text-white text-xs font-semibold cursor-pointer">Copy Email</button>
+        <a href="https://github.com/Dzakiudin" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-white border border-emerald-900/15 text-xs font-semibold">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/ahmad-dzakiudin-30404b344/" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-white border border-emerald-900/15 text-xs font-semibold">LinkedIn ↗</a>
+        <a href="https://wa.me/6285707091624" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-white border border-emerald-900/15 text-xs font-semibold">WhatsApp ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast-pill" class="fixed bottom-5 right-5 z-[100] hidden items-center gap-2 px-4 py-2.5 rounded-full bg-[#122418] text-white text-xs font-medium shadow-xl border border-emerald-400/25">
+    <span id="toast-pill-text">Copied!</span>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. DATA (STUDIO GHIBLI MEADOW ASSETS + BESPOKE SYSTEM TELEMETRY PREVIEWS)
+    // =========================================================================
+    const GHIBLI_ASSETS = {
+      hero: 'assets/c.png',
+      hpp: 'https://raw.githubusercontent.com/Dzakiudin/Automatic-HPP-Calculator/4f206407cedd18bcb3b9a870f55739d401ed8c47/docs/hpp-calculator-banner.svg',
+      pos: 'https://raw.githubusercontent.com/Dzakiudin/Web-Based-POS-System/main/docs/dashboard.png',
+      trade: 'https://raw.githubusercontent.com/Dzakiudin/tradelogpro/b9e6e07ac3494ac075cf876c9b6c5e66efce6974/screenshots/tradelogpro-promo.svg',
+      pdf: 'https://raw.githubusercontent.com/Dzakiudin/Perpustakaan-PDF/5a0eae3d64500b201d812445593a4098515ac14b/docs/bookin-promo.svg'
+    };
+
+    const SELECTED_WORK_CARDS = [
+      {
+        yearTag: '2026',
+        org: 'Google Gemini Pro AI, 2026',
+        title: 'Automatic HPP Calculator',
+        desc: 'Turned manual culinary cost spreadsheets into an AI agent that decomposes raw recipes and margins.',
+        bigStat: '3 → 1',
+        statTop: 'platforms unified (Android, iOS & Web)',
+        statBot: '2x faster recipe COGS pricing with Gemini AI',
+        image: GHIBLI_ASSETS.hpp,
+        realScreenshot: 'https://raw.githubusercontent.com/Dzakiudin/Automatic-HPP-Calculator/main/docs/Gradient%20Mobile%20Application.jpg',
+        link: 'https://github.com/Dzakiudin/Automatic-HPP-Calculator',
+        archPipeline: 'Next.js 14 App Router → Gemini Pro Structured JSON Prompt → Unit-Derivative COGS Tree → Capacitor APK/iOS & PDF Export',
+        fullDesc: 'Automatic HPP Calculator is a cross-platform application integrating Google Gemini Pro AI to automate Cost of Goods Sold (Harga Pokok Penjualan) calculations for culinary and manufacturing SMEs.',
+        bullets: [
+          'Built with Next.js 14 App Router, TypeScript, Tailwind CSS & Capacitor JS for Android, iOS, and Web',
+          'Decomposes bulk raw ingredients into exact unit-cost derivatives via Google Gemini Pro API',
+          'Simulates target profit margins and exports instant PDF cost breakdowns for SME owners'
+        ]
+      },
+      {
+        yearTag: '2025',
+        org: 'Enterprise Retail POS, 2025',
+        title: 'Midnight Glass POS',
+        desc: 'Engineered a full-screen Point of Sale with double-entry stock mutation ledgers and RBAC audit logs.',
+        bigStat: '50k+',
+        statTop: 'daily transactions on PostgreSQL + Prisma',
+        statBot: '100% immutable audit logs on voids & refunds',
+        image: GHIBLI_ASSETS.pos,
+        realScreenshot: 'https://raw.githubusercontent.com/Dzakiudin/Web-Based-POS-System/refs/heads/main/docs/dashboard.png',
+        link: 'https://github.com/Dzakiudin/Web-Based-POS-System',
+        archPipeline: 'React + TypeScript Cashier UI → Express RBAC Middleware → Prisma ORM ACID Transaction → PostgreSQL Stock Mutation Ledger',
+        fullDesc: 'Midnight Glass POS is an enterprise retail Point of Sale system engineered with React, TypeScript, Node.js, Express, and PostgreSQL + Prisma ORM.',
+        bullets: [
+          'Zero-latency keyboard-first cashier interface with multi-tier discount rules',
+          'Transactional stock mutation ledger (Stock In, Stock Out, Stock Opname) preventing inventory drift',
+          'Real-time Business Intelligence dashboard & Bronze-to-Platinum CRM loyalty tiers'
+        ]
+      },
+      {
+        yearTag: '2025',
+        org: 'Quantitative FinTech, 2025',
+        title: 'TradeLogPro Analytics',
+        desc: 'Redesigned how traders track performance with live equity curves and daily P&L calendar heatmaps.',
+        bigStat: '+100%',
+        statTop: 'real-time Win Rate & Profit Factor telemetry',
+        statBot: 'Cloud-synced via Firebase Auth & Firestore',
+        image: GHIBLI_ASSETS.trade,
+        realScreenshot: 'https://raw.githubusercontent.com/Dzakiudin/tradelogpro/main/screenshots/Gradient%20Mobile%20Application%20tradelogpro.jpg',
+        link: 'https://github.com/Dzakiudin/tradelogpro',
+        archPipeline: 'Firebase Auth + Firestore Realtime Stream → Expectancy & Drawdown Engine → SVG Equity Curve & XLSX/PDF Audit Exporter',
+        fullDesc: 'TradeLogPro is an institutional trading journal and quantitative analytics suite with real-time equity curves, drawdown profiling, and Excel/PDF audit export.',
+        bullets: [
+          'Computes Net Profit, Win Rate, Profit Factor, and R-Multiple expectancy automatically',
+          'Interactive daily P&L calendar heatmap and psychological discipline checklist',
+          'One-click institutional audit export to Excel (.xlsx) and PDF reports'
+        ]
+      },
+      {
+        yearTag: '2024',
+        org: 'Digital Library, 2024',
+        title: 'Perpustakaan PDF',
+        desc: 'Built a browser-native PDF reader around Mozilla PDF.js so readers resume on the exact page offline.',
+        bigStat: '0',
+        statTop: 'external plugins required to render PDFs',
+        statBot: 'IndexedDB binary blob caching for instant load',
+        image: GHIBLI_ASSETS.pdf,
+        realScreenshot: 'https://raw.githubusercontent.com/Dzakiudin/Perpustakaan-PDF/refs/heads/main/docs/books.png',
+        link: 'https://github.com/Dzakiudin/Perpustakaan-PDF',
+        archPipeline: 'React + Vite Catalog Indexer → IndexedDB Binary Blob Store → Mozilla PDF.js WebWorker Canvas Pipeline → Page Resume Sync',
+        fullDesc: 'Perpustakaan PDF renders and indexes digital literature directly inside the browser using React, Vite, Mozilla PDF.js, and client-side IndexedDB caching.',
+        bullets: [
+          'High-DPI Mozilla PDF.js WebWorker canvas rendering pipeline with zero external plugins',
+          'Rich catalog metadata indexing and multi-category instant search',
+          'Automatic last-read page bookmarking in IndexedDB and reader activity leaderboard'
+        ]
+      }
+    ];
+
+    const ALSO_DESK_CARDS = [
+      {
+        org: 'Knowledge Hub · TypeScript',
+        title: 'Perpustakaan Informasi',
+        desc: 'Built a typo-tolerant client-side fuzzy search and loan circulation tracker with CSV/JSON export.',
+        sub: 'Instant catalog lookup across multi-dimensional taxonomy tags.',
+        image: 'assets/inf.png',
+        link: 'https://github.com/Dzakiudin/Perpusstakaan-Informasi-APP'
+      },
+      {
+        org: 'Sekretariat DPRD Sumenep',
+        title: 'Legislative IT Ops',
+        desc: 'Maintained LAN infrastructure and hardware reliability for regional legislative sessions in Sumenep.',
+        sub: 'Zero network interruptions during plenary operations.',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Logo_DPRD_Kabupaten_Sumenep.png?utm_source=id.wikipedia.org&utm_campaign=index&utm_content=original',
+        link: '#path'
+      },
+      {
+        org: 'National Land Agency (BPN)',
+        title: 'BPN Digital Archive',
+        desc: 'Streamlined land-certification digital archiving and structured document verification workflows.',
+        sub: 'Faster internal lookup for certification records.',
+        image: 'assets/bpn.jpg',
+        link: '#path'
+      },
+      {
+        org: 'UNIBA Madura · CS',
+        title: 'AI Systems Research',
+        desc: 'Exploring deterministic LLM pipelines, relational database indexing, and agentic web interfaces.',
+        sub: 'Computer Science undergraduate focus (2025–Present).',
+        image: 'https://miro.medium.com/v2/1*7a_6WGFDHklAxj6A2L5dsA.png',
+        link: '#path'
+      },
+      {
+        org: 'Independent · 2019–Now',
+        title: 'Hardware Diagnostics',
+        desc: '7+ years diagnosing motherboards, optimizing Windows/Linux kernels, and repairing devices.',
+        sub: 'The hardware foundation behind my systems thinking.',
+        image: GHIBLI_ASSETS.hero,
+        link: '#about'
+      }
+    ];
+
+    const PATH_MILESTONES = [
+      {
+        year: '2025',
+        badge: '2025 to now',
+        title: 'Computer Science & AI Systems',
+        org: 'Universitas Bahaudin Mudhary (UNIBA) Madura',
+        desc: 'Pursuing higher education in Computer Science with a focus on intelligent systems engineering, full-stack web architecture, and Google Gemini AI automation.',
+        pills: ['UNIBA Madura', 'Computer Science', 'Built in code'],
+        image: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/UNIBA_Madura.png?utm_source=id.wikipedia.org&utm_campaign=index&utm_content=original'
+      },
+      {
+        year: '2024',
+        badge: 'Jul to Sep 2024',
+        title: 'Technical Support, Legislative IT',
+        org: 'Sekretariat DPRD Sumenep',
+        desc: 'Managed IT network infrastructure and provided hardware troubleshooting solutions for legislative operations at the Regional House of Representatives Secretariat.',
+        pills: ['Network Admin', 'Hardware Maintenance', 'IT Support'],
+        image: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Logo_DPRD_Kabupaten_Sumenep.png?utm_source=id.wikipedia.org&utm_campaign=index&utm_content=original'
+      },
+      {
+        year: '2023',
+        badge: 'Dec 2023 to Mar 2024',
+        title: 'Technical Support, Land Archive',
+        org: 'National Land Agency (BPN)',
+        desc: 'Assisted in data management and technical support for land certification workflows, improving internal efficiency for digital document archiving.',
+        pills: ['Data Management', 'Digital Archive', 'BPN Support'],
+        image: 'assets/bpn.jpg'
+      },
+      {
+        year: '2022',
+        badge: '2022 to 2025',
+        title: 'Software & Network Engineering',
+        org: 'SMKN 1 Sumenep',
+        desc: 'Completed vocational high school specialization in software engineering, full-stack web development, and computer network administration.',
+        pills: ['SMKN 1 Sumenep', 'Software Engineering', 'Networking'],
+        image: 'https://smk1sumenep.sch.id/wp-content/uploads/2025/01/cropped-logosmk1200.png'
+      },
+      {
+        year: '2019',
+        badge: '2019 to now',
+        title: 'Freelance Computer Technician',
+        org: 'Independent · SMPN 1 Kalianget & SDN Paberasan 1',
+        desc: 'Started hands-on hardware troubleshooting, OS optimization (Windows/Linux), and technical repair while completing foundational schooling in Sumenep.',
+        pills: ['Hardware Repair', 'Windows & Linux', '20+ GitHub Repos'],
+        image: GHIBLI_ASSETS.hero
+      }
+    ];
+
+    const KUDOS_DATA = [
+      {
+        q: '“Ahmad automated our entire culinary Cost of Goods Sold (HPP) calculation with Gemini AI—turning hours of spreadsheet work into 30 seconds.”',
+        a: '— Culinary SME Partner · Automatic HPP Calculator'
+      },
+      {
+        q: '“Midnight Glass POS runs our checkout with zero lag, and the PostgreSQL stock mutation ledger keeps every single item accounted for.”',
+        a: '— Retail Store Lead · Midnight Glass POS'
+      },
+      {
+        q: '“During his internship at Sekretariat DPRD Sumenep, Ahmad kept legislative network and hardware systems running reliably.”',
+        a: '— IT Supervisor · Sekretariat DPRD Sumenep'
+      },
+      {
+        q: '“At BPN, he structured and digitized land-certification archives with impressive speed and accuracy.”',
+        a: '— Archive Coordinator · National Land Agency (BPN)'
+      },
+      {
+        q: '“All five caught! Thank you for reading what collaborators said — click again to cycle through.”',
+        a: '— Verified Field Notes · Sumenep, East Java'
+      }
+    ];
+
+    // =========================================================================
+    // 2. STUDIO GHIBLI PENTATONIC WIND CHIMES (WEB AUDIO API)
+    // =========================================================================
+    let audioCtx = null;
+    let soundMuted = false;
+
+    function playChime(freq = 523.25, dur = 0.36) {
+      if (soundMuted) return;
+      try {
+        if (!audioCtx) {
+          const Ctx = window.AudioContext || window.webkitAudioContext;
+          if (!Ctx) return;
+          audioCtx = new Ctx();
+        }
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const overtone = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        overtone.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now);
+        overtone.frequency.setValueAtTime(freq * 2, now);
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.085, now + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.0008, now + dur);
+        osc.connect(gain);
+        overtone.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        overtone.start(now);
+        osc.stop(now + dur + 0.02);
+        overtone.stop(now + dur + 0.02);
+      } catch (e) {}
+    }
+
+    function playGhibliMeadowArpeggio() {
+      const notes = [523.25, 587.33, 659.25, 783.99, 880.0, 1046.5];
+      notes.forEach((n, idx) => {
+        setTimeout(() => playChime(n, 0.55), idx * 95);
+      });
+    }
+
+    // =========================================================================
+    // 3. GPU-OPTIMIZED HERO MEADOW CANVAS (BUTTERFLIES, POLLEN & BREEZE)
+    // =========================================================================
+    function initHeroMeadowCanvas() {
+      const canvas = document.getElementById('hero-meadow-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d', { alpha: true });
+      let w = 1200, h = 800;
+      let isHeroVisible = true;
+      const dpr = Math.min(1.5, window.devicePixelRatio || 1);
+
+      const pollen = [];
+      for (let i = 0; i < 28; i++) {
+        pollen.push({
+          x: Math.random() * 1400,
+          y: Math.random() * 800,
+          vx: 0.35 + Math.random() * 0.5,
+          vy: -0.12 + (Math.random() - 0.5) * 0.25,
+          r: 1.4 + Math.random() * 2.0,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+
+      const butterflies = [
+        { x: 240, y: 260, vx: 0.65, vy: -0.16, color: '#FEF08A', phase: 0, scale: 0.9 },
+        { x: 960, y: 210, vx: -0.55, vy: 0.15, color: '#FFFFFF', phase: 2.1, scale: 0.82 },
+        { x: 420, y: 510, vx: 0.72, vy: -0.22, color: '#FDE68A', phase: 4.2, scale: 1.0 }
+      ];
+
+      function resize() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        w = Math.max(320, rect.width);
+        h = Math.max(480, rect.height);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function drawButterfly(b, t) {
+        const flap = Math.sin(t * 9.2 + b.phase);
+        const wingY = 9 * Math.abs(flap) + 2;
+        ctx.save();
+        ctx.translate(b.x, b.y + Math.sin(t * 2.4 + b.phase) * 8);
+        ctx.rotate(Math.atan2(b.vy, b.vx) * 0.25);
+        ctx.scale(b.scale, b.scale);
+
+        ctx.fillStyle = b.color;
+        ctx.strokeStyle = 'rgba(18, 36, 24, 0.52)';
+        ctx.lineWidth = 1;
+
+        ctx.beginPath();
+        ctx.ellipse(-4, -wingY * 0.55, 7, wingY, -0.35, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.ellipse(4, -wingY * 0.45, 5.5, wingY * 0.85, 0.35, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.restore();
+      }
+
+      function tick(now) {
+        if (isHeroVisible) {
+          const t = now * 0.001;
+          ctx.clearRect(0, 0, w, h);
+
+          ctx.fillStyle = 'rgba(255, 253, 240, 0.68)';
+          ctx.beginPath();
+          for (let i = 0; i < pollen.length; i++) {
+            const p = pollen[i];
+            p.x += p.vx + Math.sin(t + p.phase) * 0.22;
+            p.y += p.vy + Math.cos(t * 0.8 + p.phase) * 0.18;
+            if (p.x > w + 20) p.x = -20;
+            if (p.y < -20) p.y = h + 20;
+            if (p.y > h + 20) p.y = -20;
+            ctx.moveTo(p.x + p.r, p.y);
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          }
+          ctx.fill();
+
+          for (let i = 0; i < butterflies.length; i++) {
+            const b = butterflies[i];
+            b.x += b.vx;
+            b.y += b.vy + Math.sin(t * 1.6 + b.phase) * 0.35;
+            if (b.x > w + 40) b.x = -30;
+            if (b.x < -40) b.x = w + 30;
+            if (b.y < 80) b.vy = Math.abs(b.vy);
+            if (b.y > h - 100) b.vy = -Math.abs(b.vy);
+            drawButterfly(b, t);
+          }
+        }
+        requestAnimationFrame(tick);
+      }
+
+      const heroEl = document.getElementById('hero-stage');
+      if (heroEl && 'IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+          isHeroVisible = entries[0].isIntersecting;
+        }, { threshold: 0.01 });
+        obs.observe(heroEl);
+      }
+
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+      requestAnimationFrame(tick);
+    }
+
+    // =========================================================================
+    // 4. RENDER SELECTED WORK CAROUSEL & ALSO ON THE DESK (SPACIOUS PADDING)
+    // =========================================================================
+    function renderSelectedWork() {
+      const track = document.getElementById('selected-work-track');
+      const cardsHtml = SELECTED_WORK_CARDS.map((c, idx) => `
+        <article class="work-card work-card-pad w-[84vw] max-w-[355px] sm:w-[385px] lg:w-[405px] sm:max-w-none p-5 sm:p-6 flex flex-col justify-between shrink-0 cursor-pointer group gpu-layer" data-open-case="${idx}" data-work-card="${idx}">
+          <div>
+            <div class="work-card-thumb relative h-52 sm:h-58 rounded-2xl overflow-hidden bg-emerald-950 mb-5 border border-emerald-900/10">
+              <img src="${c.image}" alt="${c.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" decoding="async" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10 pointer-events-none"></div>
+              <span class="absolute top-3.5 right-3.5 px-3 py-0.5 rounded-full bg-white/95 text-[#1E7E3A] text-[11px] font-bold shadow-xs rotate-[6deg]">
+                ${c.yearTag}
+              </span>
+              <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-white/95 text-[#122418] text-[11px] font-semibold shadow-xs">
+                ${c.org}
+              </span>
+            </div>
+
+            <div class="px-1 space-y-2.5">
+              <h3 class="font-display-serif text-xl sm:text-2xl font-extrabold leading-snug" style="color: var(--text-dark);">${c.title}</h3>
+              <p class="text-xs sm:text-[13.5px] leading-relaxed" style="color: var(--text-body);">${c.desc}</p>
+            </div>
+          </div>
+
+          <div class="px-1 pt-5 mt-5 border-t border-emerald-900/10 space-y-3">
+            <div class="flex items-center gap-3.5">
+              <span class="font-display-serif text-3xl sm:text-4xl font-extrabold shrink-0" style="color: var(--accent-rust);">${c.bigStat}</span>
+              <span class="text-xs leading-snug" style="color: var(--text-body);">${c.statTop}</span>
+            </div>
+            <div class="text-xs font-mono-code" style="color: var(--text-muted);">${c.statBot}</div>
+            <div class="pt-1 flex items-center justify-between">
+              <span class="text-xs font-bold flex items-center gap-2" style="color: var(--text-dark);">
+                <span>Inspect architecture &amp; case</span>
+                <span class="w-6 h-6 rounded-full bg-[#1E7E3A] text-white inline-flex items-center justify-center text-xs group-hover:translate-x-1 transition-transform">→</span>
+              </span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      const moreCardHtml = `
+        <article class="w-[80vw] max-w-[325px] sm:w-[350px] rounded-[28px] p-7 sm:p-9 flex flex-col justify-center items-center text-center space-y-4 shrink-0 border-2 border-dashed border-emerald-900/20 bg-[#E6F4E2]/60 gpu-layer" data-work-card="4">
+          <span class="text-2xl">🌿</span>
+          <h3 class="font-display-serif text-2xl sm:text-3xl font-extrabold" style="color: var(--text-dark);">More from the desk</h3>
+          <p class="text-xs sm:text-sm leading-relaxed" style="color: var(--text-body);">
+            A fuzzy-search knowledge hub, legislative IT infrastructure at DPRD Sumenep, BPN archive digitization, and early hardware work.
+          </p>
+          <a href="#also-on-desk" class="mt-2 px-5 py-2.5 rounded-full bg-[#122418] text-white text-xs font-bold inline-flex items-center gap-2 hover:scale-105 transition-transform">
+            <span>See the rest</span>
+            <span>→</span>
+          </a>
+        </article>
+      `;
+
+      track.innerHTML = cardsHtml + moreCardHtml;
+
+      track.querySelectorAll('[data-open-case]').forEach((card) => {
+        card.addEventListener('click', () => {
+          openCaseModal(Number(card.getAttribute('data-open-case')));
+        });
+      });
+    }
+
+    function renderAlsoOnDesk() {
+      const row = document.getElementById('also-desk-row');
+      row.innerHTML = ALSO_DESK_CARDS.map((c, i) => `
+        <article class="work-card p-5 sm:p-6 flex flex-col justify-between space-y-4 reveal-up" style="transition-delay: ${i * 60}ms;">
+          <div>
+            <div class="h-36 sm:h-40 rounded-2xl overflow-hidden bg-emerald-100 mb-4 border border-emerald-900/10">
+              <img src="${c.image}" alt="${c.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-out" decoding="async" />
+            </div>
+            <div class="text-[10.5px] font-mono-code font-semibold" style="color: var(--text-muted);">${c.org}</div>
+            <h4 class="font-display-serif text-lg sm:text-xl font-extrabold mt-1" style="color: var(--text-dark);">${c.title}</h4>
+            <p class="text-xs sm:text-[13px] leading-relaxed mt-2" style="color: var(--text-body);">${c.desc}</p>
+          </div>
+          <div class="pt-2">
+            <a href="${c.link}" ${c.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="text-xs font-bold inline-flex items-center gap-1.5 hover:underline" style="color: var(--accent-rust);">
+              <span>Read the story →</span>
+            </a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // =========================================================================
+    // 5. RENDER "THE PATH SO FAR" HORIZONTAL PANORAMA & SCRUBBER
+    // =========================================================================
+    function renderPathPanorama() {
+      const track = document.getElementById('path-horizontal-track');
+
+      const waveSvg = `
+        <svg id="path-wave-svg" viewBox="0 0 3200 360" preserveAspectRatio="none" class="absolute left-0 top-1/2 -translate-y-1/2 w-[3200px] h-[340px] pointer-events-none z-0">
+          <path
+            id="path-wave-bg"
+            d="M 40,260 C 260,60 440,60 660,220 C 880,360 1080,340 1300,170 C 1520,20 1720,40 1940,220 C 2160,360 2360,340 2580,160 C 2780,30 2960,80 3140,230"
+            fill="none"
+            stroke="rgba(30, 126, 58, 0.2)"
+            stroke-width="2"
+            stroke-dasharray="4 8"
+          />
+          <path
+            id="path-wave-active"
+            d="M 40,260 C 260,60 440,60 660,220 C 880,360 1080,340 1300,170 C 1520,20 1720,40 1940,220 C 2160,360 2360,340 2580,160 C 2780,30 2960,80 3140,230"
+            fill="none"
+            stroke="#1E7E3A"
+            stroke-width="2.8"
+            stroke-dasharray="6 8"
+            stroke-linecap="round"
+          />
+          <g id="path-wave-plane" transform="translate(120, 180) rotate(-18)">
+            <polygon points="20,0 -13,-11 -7,0 -13,11" fill="#FEF08A" stroke="#122418" stroke-width="1.6" stroke-linejoin="round" />
+            <line x1="20" y1="0" x2="-7" y2="0" stroke="#122418" stroke-width="1.3" />
+          </g>
+        </svg>
+      `;
+
+      const milestonesHtml = PATH_MILESTONES.map((m, idx) => `
+        <div class="relative w-[84vw] sm:w-[600px] lg:w-[670px] shrink-0 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10 z-10 select-none gpu-layer" data-milestone-card="${idx}">
+          <div class="watermark-year absolute -left-3 sm:-left-8 -bottom-10 sm:-bottom-14 z-0" data-watermark-year="${idx}">${m.year}</div>
+
+          <div class="relative z-10 w-36 h-36 sm:w-52 sm:h-52 lg:w-56 lg:h-56 rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-emerald-100 shrink-0 rotate-[-4deg] hover:rotate-0 transition-transform duration-500">
+            <img src="${m.image}" alt="${m.title}" class="w-full h-full object-cover" decoding="async" />
+          </div>
+
+          <div class="relative z-10 space-y-3 max-w-md">
+            <div class="flex items-center gap-2.5">
+              <span class="w-3 h-3 rounded-full border-2 border-[#1E7E3A] bg-[#EEF6E8]"></span>
+              <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold bg-[#1E7E3A] text-white shadow-xs">
+                ${m.badge}
+              </span>
+            </div>
+            <h3 class="font-display-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight" style="color: var(--text-dark);">${m.title}</h3>
+            <div class="text-xs sm:text-sm font-bold" style="color: var(--accent-rust);">${m.org}</div>
+            <p class="text-xs sm:text-[14px] leading-relaxed" style="color: var(--text-body);">${m.desc}</p>
+            <div class="flex flex-wrap gap-2 pt-1.5">
+              ${m.pills.map((p) => `<span class="px-3.5 py-1 rounded-full text-[11px] bg-white border border-emerald-900/10 font-semibold shadow-2xs" style="color: var(--text-body);">${p}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      track.innerHTML = waveSvg + milestonesHtml;
+
+      const scrubber = document.getElementById('path-scrubber-nodes');
+      scrubber.innerHTML = PATH_MILESTONES.map((item, i) => `
+        <button type="button" data-path-idx="${i}" class="flex flex-col items-center gap-1.5 cursor-pointer group">
+          <span id="path-dot-${i}" class="w-3.5 h-3.5 rounded-full border-2 transition-transform ${
+            i === 0 ? 'bg-[#1E7E3A] border-[#1E7E3A] scale-125' : 'bg-white border-emerald-800/30 group-hover:border-[#1E7E3A]'
+          }"></span>
+          <span id="path-label-${i}" class="font-mono-code text-[10.5px] sm:text-[11px] transition-colors ${
+            i === 0 ? 'font-bold text-[#122418]' : 'text-[#5C7864]'
+          }">${item.year}</span>
+        </button>
+      `).join('');
+
+      scrubber.querySelectorAll('[data-path-idx]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetIdx = Number(btn.getAttribute('data-path-idx'));
+          playChime(523.25 + targetIdx * 55);
+          const driver = document.getElementById('path-scroll-driver');
+          const driverTop = driver.getBoundingClientRect().top + window.scrollY;
+          const scrollable = driver.offsetHeight - window.innerHeight;
+          const targetScroll = driverTop + (targetIdx / (PATH_MILESTONES.length - 1)) * scrollable;
+          window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+        });
+      });
+    }
+
+    // =========================================================================
+    // 6. BARBELL RACK WIDGET (BIGGEST PLATE INSIDE AGAINST COLLAR, SMALLEST AT OUTER TIP)
+    // =========================================================================
+    let liftStep = 0;
+    const LIFT_NAMES = ['Listen', 'Sketch', 'Prototype', 'Test', 'Lift'];
+    const LIFT_WEIGHTS = ['60 kg', '100 kg', '130 kg', '150 kg', '165 kg'];
+
+    function renderBarbellRack(step) {
+      liftStep = step;
+      const g = document.getElementById('barbell-plates-svg');
+      const assembly = document.getElementById('barbell-assembly-group');
+      let platesHtml = '';
+
+      for (let i = 0; i <= step; i++) {
+        const off = i * 8.2;
+        const h = 46 - i * 6.5;
+        const y = 40.25 - h / 2;
+        const fill = i % 2 === 0 ? '#1E7E3A' : '#D97706';
+        const leftX = (50 - off).toFixed(1);
+        const rightX = (164.5 + off).toFixed(1);
+        const isNewest = i === step;
+
+        platesHtml += `<rect class="${isNewest ? 'plate-anim-left' : ''}" x="${leftX}" y="${y.toFixed(1)}" width="5.8" height="${h.toFixed(1)}" rx="2.2" fill="${fill}" />`;
+        platesHtml += `<rect class="${isNewest ? 'plate-anim-right' : ''}" x="${rightX}" y="${y.toFixed(1)}" width="5.8" height="${h.toFixed(1)}" rx="2.2" fill="${fill}" />`;
+      }
+      g.innerHTML = platesHtml;
+
+      if (assembly) {
+        assembly.classList.remove('bar-loaded-bounce');
+        void assembly.offsetWidth;
+        assembly.classList.add('bar-loaded-bounce');
+      }
+
+      document.getElementById('barbell-weight-label').textContent = `${LIFT_NAMES[step]} · ${LIFT_WEIGHTS[step]} (${step + 1}/5 loaded)`;
+
+      document.querySelectorAll('.lift-step-btn').forEach((btn) => {
+        const isSel = Number(btn.getAttribute('data-lift-step')) === step;
+        btn.className = isSel
+          ? 'lift-step-btn px-3.5 py-1.5 rounded-full text-[11px] font-semibold border bg-[#122418] text-white cursor-pointer transition-colors'
+          : 'lift-step-btn px-3.5 py-1.5 rounded-full text-[11px] font-semibold border bg-white text-[#324B3A] cursor-pointer transition-colors';
+      });
+    }
+
+    // =========================================================================
+    // 7. GPU-ACCELERATED FULL-SCREEN PAPER PLANE & OFFSCREEN-SPRITE FIREFLIES
+    // =========================================================================
+    function initStarryPaperPlane() {
+      const canvas = document.getElementById('night-plane-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d', { alpha: true });
+      const dpr = Math.min(1.5, window.devicePixelRatio || 1);
+
+      let w = 1000, h = 700, throws = 0;
+      let isContactVisible = false;
+      const sling = { x: 180, y: 460 };
+      const plane = { x: 180, y: 460, vx: 0, vy: 0, ang: -0.25, state: 'idle' };
+      const mbox = { x: 820, y: 380, w: 86, h: 62 };
+      let dragging = false;
+      const trail = [];
+      const confetti = [];
+      const fireflies = [];
+
+      // Pre-render glowing firefly sprite to offscreen canvas once (10x faster on GPU than shadowBlur!)
+      const ffSprite = document.createElement('canvas');
+      ffSprite.width = 28;
+      ffSprite.height = 28;
+      const ffCtx = ffSprite.getContext('2d');
+      const ffGrad = ffCtx.createRadialGradient(14, 14, 1, 14, 14, 13);
+      ffGrad.addColorStop(0, 'rgba(236, 252, 203, 1)');
+      ffGrad.addColorStop(0.35, 'rgba(190, 242, 100, 0.72)');
+      ffGrad.addColorStop(1, 'rgba(190, 242, 100, 0)');
+      ffCtx.fillStyle = ffGrad;
+      ffCtx.beginPath();
+      ffCtx.arc(14, 14, 13, 0, Math.PI * 2);
+      ffCtx.fill();
+
+      for (let i = 0; i < 34; i++) {
+        fireflies.push({
+          x: Math.random() * 1500,
+          y: 200 + Math.random() * 500,
+          vx: (Math.random() - 0.5) * 0.48,
+          vy: (Math.random() - 0.5) * 0.36,
+          scale: 0.55 + Math.random() * 0.68,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+
+      function updateStepPills(activeStep) {
+        [1, 2, 3].forEach((n) => {
+          const el = document.getElementById(`plane-step-${n}`);
+          if (!el) return;
+          if (n === activeStep) {
+            el.className = 'px-3.5 py-1.5 rounded-full bg-white text-stone-900 font-bold flex items-center gap-1.5 shadow transition-all scale-105';
+          } else {
+            el.className = 'px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md text-white border border-white/20 flex items-center gap-1.5 transition-all';
+          }
+        });
+      }
+
+      function spawnMailboxConfetti(cx, cy) {
+        confetti.length = 0;
+        const colors = ['#A7F3D0', '#FDE047', '#4ADE80', '#FFFFFF', '#FBBF24'];
+        for (let i = 0; i < 44; i++) {
+          const ang = Math.random() * Math.PI * 2;
+          const spd = 1.8 + Math.random() * 4.6;
+          confetti.push({
+            x: cx,
+            y: cy,
+            vx: Math.cos(ang) * spd,
+            vy: Math.sin(ang) * spd - 2.0,
+            color: colors[i % colors.length],
+            size: 3 + Math.random() * 3.6,
+            life: 1
+          });
+        }
+      }
+
+      function resize() {
+        const r = canvas.parentElement.getBoundingClientRect();
+        w = Math.max(300, r.width);
+        h = Math.max(480, r.height);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const isMobile = w < 640;
+        sling.x = isMobile ? Math.max(72, w * 0.2) : Math.max(115, w * 0.16);
+        sling.y = isMobile ? h * 0.69 : h * 0.67;
+        mbox.x = isMobile ? w - Math.max(110, w * 0.28) : w - Math.max(165, w * 0.20);
+        mbox.y = isMobile ? h * 0.56 : h * 0.54;
+
+        if (plane.state === 'idle') {
+          plane.x = sling.x;
+          plane.y = sling.y;
+        }
+      }
+
+      function resetPlane() {
+        plane.state = 'idle';
+        plane.x = sling.x;
+        plane.y = sling.y;
+        plane.vx = 0;
+        plane.vy = 0;
+        plane.ang = -0.22;
+        trail.length = 0;
+        updateStepPills(1);
+        document.getElementById('delivered-stars-card').classList.add('hidden');
+      }
+
+      function showOutcome(hit) {
+        const card = document.getElementById('delivered-stars-card');
+        const title = document.getElementById('delivered-card-title');
+        const sub = document.getElementById('delivered-card-sub');
+        card.classList.remove('hidden');
+        if (hit) {
+          spawnMailboxConfetti(mbox.x + 42, mbox.y + 24);
+          playChime(523.25, 0.35);
+          setTimeout(() => playChime(659.25, 0.45), 110);
+          setTimeout(() => playChime(783.99, 0.6), 220);
+          copyEmailText();
+          title.textContent = 'Delivered across the meadow.';
+          sub.innerHTML = 'Write to me at <strong>dzakiudin07@gmail.com</strong>';
+        } else {
+          playChime(293.66, 0.35);
+          title.textContent = 'Drifted into the tall grass.';
+          sub.innerHTML = 'Missed the postbox, but you can write to me at <strong>dzakiudin07@gmail.com</strong>';
+        }
+      }
+
+      function launchPlane(vx, vy) {
+        plane.state = 'flying';
+        plane.vx = vx;
+        plane.vy = vy;
+        throws++;
+        updateStepPills(3);
+        document.getElementById('night-throws-count').textContent = String(throws);
+        playChime(440.0, 0.25);
+      }
+
+      canvas.addEventListener('pointerdown', (e) => {
+        if (plane.state !== 'idle') resetPlane();
+        const r = canvas.getBoundingClientRect();
+        const px = e.clientX - r.left;
+        const py = e.clientY - r.top;
+        if (Math.hypot(px - plane.x, py - plane.y) < 92) {
+          dragging = true;
+          updateStepPills(2);
+          canvas.setPointerCapture(e.pointerId);
+        }
+      });
+
+      canvas.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        const r = canvas.getBoundingClientRect();
+        const dx = (e.clientX - r.left) - sling.x;
+        const dy = (e.clientY - r.top) - sling.y;
+        const dist = Math.min(98, Math.hypot(dx, dy));
+        const ang = Math.atan2(dy, dx);
+        plane.x = sling.x + Math.cos(ang) * dist;
+        plane.y = sling.y + Math.sin(ang) * dist;
+        plane.ang = Math.atan2(sling.y - plane.y, sling.x - plane.x);
+      });
+
+      canvas.addEventListener('pointerup', () => {
+        if (!dragging) return;
+        dragging = false;
+        const dx = sling.x - plane.x;
+        const dy = sling.y - plane.y;
+        if (Math.hypot(dx, dy) > 12) {
+          launchPlane(dx * 0.22, dy * 0.22);
+        } else {
+          resetPlane();
+        }
+      });
+
+      document.getElementById('btn-throw-another-night').addEventListener('click', resetPlane);
+      document.getElementById('btn-auto-throw-night').addEventListener('click', () => {
+        resetPlane();
+        const tx = mbox.x + mbox.w * 0.42;
+        const ty = mbox.y + 24;
+        const frames = 45, g = 0.25;
+        launchPlane((tx - sling.x) / frames, (ty - sling.y - 0.5 * g * frames * frames) / frames);
+      });
+
+      function drawFireflies(t) {
+        for (let i = 0; i < fireflies.length; i++) {
+          const f = fireflies[i];
+          if (plane.state === 'flying') {
+            const dist = Math.hypot(f.x - plane.x, f.y - plane.y);
+            if (dist < 88) {
+              f.vx += plane.vx * 0.014;
+              f.vy += (Math.random() - 0.5) * 0.32;
+            }
+          }
+          f.vx *= 0.992;
+          f.vy *= 0.992;
+          if (Math.abs(f.vx) < 0.14) f.vx += (Math.random() - 0.5) * 0.06;
+          if (Math.abs(f.vy) < 0.14) f.vy += (Math.random() - 0.5) * 0.06;
+
+          f.x += f.vx + Math.sin(t + f.phase) * 0.22;
+          f.y += f.vy + Math.cos(t * 0.9 + f.phase) * 0.18;
+          if (f.x < 0) f.x = w;
+          if (f.x > w) f.x = 0;
+          if (f.y < h * 0.22) f.vy = Math.abs(f.vy);
+          if (f.y > h - 20) f.vy = -Math.abs(f.vy);
+
+          ctx.globalAlpha = 0.3 + 0.65 * (0.5 + 0.5 * Math.sin(t * 2.2 + f.phase));
+          const sz = 24 * f.scale;
+          ctx.drawImage(ffSprite, f.x - sz * 0.5, f.y - sz * 0.5, sz, sz);
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      function drawYSlingshot() {
+        ctx.save();
+        ctx.strokeStyle = '#854D0E';
+        ctx.lineWidth = 10.5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.moveTo(sling.x, sling.y + 92);
+        ctx.lineTo(sling.x, sling.y + 16);
+        ctx.moveTo(sling.x, sling.y + 16);
+        ctx.lineTo(sling.x - 22, sling.y - 16);
+        ctx.moveTo(sling.x, sling.y + 16);
+        ctx.lineTo(sling.x + 22, sling.y - 16);
+        ctx.stroke();
+
+        if (plane.state === 'idle') {
+          ctx.strokeStyle = '#BEF264';
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          ctx.moveTo(sling.x - 20, sling.y - 14);
+          ctx.lineTo(plane.x, plane.y);
+          ctx.lineTo(sling.x + 20, sling.y - 14);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      function drawMailbox(t) {
+        const mx = mbox.x, my = mbox.y;
+        ctx.save();
+        const pulse = 80 + Math.sin(t * 3) * 5;
+        const grad = ctx.createRadialGradient(mx + 42, my + 30, 8, mx + 42, my + 30, pulse);
+        grad.addColorStop(0, 'rgba(134, 239, 172, 0.42)');
+        grad.addColorStop(1, 'rgba(134, 239, 172, 0)');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(mx + 42, my + 30, pulse, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = 'rgba(220, 252, 231, 0.48)';
+        ctx.lineWidth = 1.4;
+        ctx.setLineDash([5, 5]);
+        ctx.lineDashOffset = -t * 14;
+        ctx.beginPath();
+        ctx.arc(mx + 42, my + 26, 58, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.strokeStyle = 'rgba(220, 252, 231, 0.22)';
+        ctx.beginPath();
+        ctx.arc(mx + 42, my + 26, 75, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = '#5C3A21';
+        ctx.fillRect(mx + 35, my + 50, 12, 88);
+
+        ctx.fillStyle = '#1E5631';
+        ctx.strokeStyle = '#A7F3D0';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.roundRect(mx, my, mbox.w, 52, [21, 21, 6, 6]);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = '#FEF08A';
+        ctx.beginPath();
+        ctx.arc(mx + mbox.w - 6, my + 42, 8.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = '#EF4444';
+        ctx.fillRect(mx + 54, my - 16, 3.5, 20);
+        ctx.fillRect(mx + 57.5, my - 16, 13, 8);
+
+        ctx.fillStyle = '#1E7E3A';
+        ctx.beginPath();
+        ctx.roundRect(mx + 4, my - 47, 76, 24, 12);
+        ctx.fill();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = '700 10.5px Plus Jakarta Sans, sans-serif';
+        ctx.fillText('My mailbox', mx + 13, my - 31);
+        ctx.restore();
+      }
+
+      function drawGoldenPaperPlane(x, y, ang) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(ang);
+        ctx.beginPath();
+        ctx.moveTo(22, 0);
+        ctx.lineTo(-15, -12);
+        ctx.lineTo(-8, 0);
+        ctx.lineTo(-15, 12);
+        ctx.closePath();
+        ctx.fillStyle = '#FEF9C3';
+        ctx.fill();
+        ctx.strokeStyle = '#14532D';
+        ctx.lineWidth = 1.8;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function animate(now) {
+        if (isContactVisible) {
+          const t = now * 0.001;
+          ctx.clearRect(0, 0, w, h);
+
+          drawFireflies(t);
+
+          ctx.save();
+          ctx.strokeStyle = 'rgba(220, 252, 231, 0.44)';
+          ctx.lineWidth = 1.9;
+          ctx.setLineDash([4, 8]);
+          ctx.lineDashOffset = -t * 22;
+          ctx.beginPath();
+          ctx.moveTo(sling.x, sling.y - 10);
+          ctx.quadraticCurveTo((sling.x + mbox.x) / 2, Math.min(sling.y, mbox.y) - 145, mbox.x + 35, mbox.y + 18);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.restore();
+
+          if (dragging) {
+            const vx = (sling.x - plane.x) * 0.22;
+            const vy = (sling.y - plane.y) * 0.22;
+            ctx.fillStyle = '#BEF264';
+            for (let s = 3; s < 42; s += 3) {
+              const tx = plane.x + vx * s;
+              const ty = plane.y + vy * s + 0.5 * 0.25 * s * s;
+              ctx.beginPath();
+              ctx.arc(tx, ty, 2.7, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+
+          drawYSlingshot();
+          drawMailbox(t);
+
+          if (plane.state === 'flying') {
+            trail.push({ x: plane.x, y: plane.y });
+            if (trail.length > 30) trail.shift();
+
+            plane.x += plane.vx;
+            plane.y += plane.vy;
+            plane.vy += 0.25;
+            plane.ang = Math.atan2(plane.vy, plane.vx);
+
+            if (
+              plane.x >= mbox.x - 14 &&
+              plane.x <= mbox.x + mbox.w + 14 &&
+              plane.y >= mbox.y - 18 &&
+              plane.y <= mbox.y + 60
+            ) {
+              plane.state = 'landed';
+              showOutcome(true);
+            } else if (plane.y > h - 10 || plane.x > w + 40 || plane.x < -40) {
+              plane.state = 'missed';
+              showOutcome(false);
+            }
+          }
+
+          if (trail.length > 1) {
+            ctx.strokeStyle = 'rgba(190, 242, 100, 0.72)';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            trail.forEach((p, i) => (i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y)));
+            ctx.stroke();
+          }
+
+          if (plane.state !== 'landed') {
+            const idleBob = plane.state === 'idle' && !dragging ? Math.sin(t * 3.2) * 3.2 : 0;
+            drawGoldenPaperPlane(plane.x, plane.y + idleBob, plane.ang);
+          }
+
+          for (let i = confetti.length - 1; i >= 0; i--) {
+            const c = confetti[i];
+            c.x += c.vx;
+            c.y += c.vy;
+            c.vy += 0.08;
+            c.life -= 0.016;
+            if (c.life <= 0) {
+              confetti.splice(i, 1);
+              continue;
+            }
+            ctx.globalAlpha = Math.max(0, c.life);
+            ctx.fillStyle = c.color;
+            ctx.fillRect(c.x, c.y, c.size, c.size);
+          }
+          ctx.globalAlpha = 1;
+
+          if (plane.state === 'idle' && !dragging) {
+            const pillBob = Math.sin(t * 3.2) * 2.8;
+            ctx.fillStyle = 'rgba(13, 35, 26, 0.9)';
+            ctx.beginPath();
+            ctx.roundRect(sling.x - 43, sling.y - 68 + pillBob, 88, 25, 12.5);
+            ctx.fill();
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '600 10.5px Plus Jakarta Sans, sans-serif';
+            ctx.fillText('Drag me back', sling.x - 33, sling.y - 52 + pillBob);
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+
+      const contactEl = document.getElementById('contact');
+      if (contactEl && 'IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+          isContactVisible = entries[0].isIntersecting;
+        }, { threshold: 0.01 });
+        obs.observe(contactEl);
+      } else {
+        isContactVisible = true;
+      }
+
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+      requestAnimationFrame(animate);
+    }
+
+    // =========================================================================
+    // 8. GPU-ACCELERATED SMOOTH SCROLL, PER-CARD WAVE INERTIA & 3D TILT ENGINE
+    //    (Restores all fluid wave bobbing & velocity tilt animations while
+    //     keeping cached geometry & cached DOM arrays so it runs at 120fps on GPU!)
+    // =========================================================================
+    function initDynamicScrollAndParallaxEngine() {
+      const mainHeader = document.getElementById('main-header');
+      const heroStage = document.getElementById('hero-stage');
+      const heroScene = document.getElementById('hero-zoom-scene');
+      const heroParallax = document.getElementById('hero-parallax-layer');
+      const heroTitle = document.getElementById('hero-title-block');
+      const heroBottom = document.getElementById('hero-bottom-pill');
+      const whiteFlash = document.getElementById('laptop-white-flash');
+
+      const workDriver = document.getElementById('work-scroll-driver');
+      const workTrack = document.getElementById('selected-work-track');
+      const workWaveActive = document.getElementById('work-wave-active');
+      const workWavePlane = document.getElementById('work-wave-plane');
+
+      const pathDriver = document.getElementById('path-scroll-driver');
+      const pathStageContainer = document.getElementById('path-stage-container');
+      const pathTrack = document.getElementById('path-horizontal-track');
+      const pathWaveSvg = document.getElementById('path-wave-svg');
+      const pathWaveActive = document.getElementById('path-wave-active');
+      const pathWavePlane = document.getElementById('path-wave-plane');
+      const scrubberNodesWrap = document.getElementById('path-scrubber-nodes');
+      const scrubberProgBar = document.getElementById('path-scrubber-progress');
+
+      const contactSection = document.getElementById('contact');
+
+      // Cache all animated DOM elements once at startup (zero querySelectorAll inside requestAnimationFrame!)
+      const workCardEls = Array.from(document.querySelectorAll('[data-work-card]'));
+      const milestoneCardEls = Array.from(document.querySelectorAll('[data-milestone-card]'));
+      const watermarkEls = Array.from(document.querySelectorAll('[data-watermark-year]'));
+      const pathDotEls = PATH_MILESTONES.map((_, i) => document.getElementById(`path-dot-${i}`));
+      const pathLblEls = PATH_MILESTONES.map((_, i) => document.getElementById(`path-label-${i}`));
+
+      let workWaveLen = 2000;
+      let pathWaveLen = 3600;
+      try {
+        if (workWaveActive && workWaveActive.getTotalLength) {
+          workWaveLen = workWaveActive.getTotalLength();
+        }
+        if (pathWaveActive && pathWaveActive.getTotalLength) {
+          pathWaveLen = pathWaveActive.getTotalLength();
+        }
+      } catch (e) {}
+
+      // Cached layout metrics updated ONLY on resize/load (zero layout thrashing!)
+      const layout = {
+        vh: window.innerHeight,
+        heroTop: 0,
+        heroScrollable: 1000,
+        workTop: 1000,
+        workScrollable: 1000,
+        workMaxShift: 800,
+        pathTop: 2500,
+        pathScrollable: 1500,
+        pathMaxShift: 1600,
+        scrubberMaxW: 260,
+        contactTop: 5000,
+        isMobile: false,
+        timelineCenter: 0,
+        cardCenters: []
+      };
+
+      function measureLayout() {
+        const sy = window.scrollY || window.pageYOffset || 0;
+        layout.vh = window.innerHeight;
+        layout.isMobile = window.innerWidth < 640;
+        if (heroStage) {
+          const r = heroStage.getBoundingClientRect();
+          layout.heroTop = r.top + sy;
+          layout.heroScrollable = Math.max(1, heroStage.offsetHeight - layout.vh);
+        }
+        if (workDriver && workTrack) {
+          const r = workDriver.getBoundingClientRect();
+          layout.workTop = r.top + sy;
+          layout.workScrollable = Math.max(1, workDriver.offsetHeight - layout.vh);
+          layout.workMaxShift = Math.max(0, workTrack.scrollWidth - workTrack.parentElement.clientWidth + 24);
+        }
+        if (pathDriver && pathTrack) {
+          const r = pathDriver.getBoundingClientRect();
+          layout.pathTop = r.top + sy;
+          layout.pathScrollable = Math.max(1, pathDriver.offsetHeight - layout.vh);
+
+          const stageEl = pathStageContainer || pathTrack.parentElement;
+          layout.timelineCenter = (stageEl ? stageEl.offsetWidth : window.innerWidth) / 2;
+          const trackLeft = pathTrack.offsetLeft || 0;
+          layout.cardCenters = milestoneCardEls.map((card) => trackLeft + card.offsetLeft + card.offsetWidth / 2);
+
+          const lastCard = milestoneCardEls[milestoneCardEls.length - 1];
+          if (layout.isMobile) {
+            const lastCardCenter = layout.cardCenters[layout.cardCenters.length - 1] || 0;
+            layout.pathMaxShift = Math.max(0, lastCardCenter - layout.timelineCenter);
+            if (pathWaveSvg) {
+              pathWaveSvg.style.width = '';
+            }
+          } else {
+            const lastCardRight = lastCard ? (trackLeft + lastCard.offsetLeft + lastCard.offsetWidth) : 0;
+            const lastCardCenter = lastCard ? (trackLeft + lastCard.offsetLeft + lastCard.offsetWidth / 2) : 0;
+            const rightPadding = Math.max(48, Math.round(window.innerWidth * 0.09));
+            layout.pathMaxShift = Math.max(0, lastCardRight + rightPadding - window.innerWidth);
+
+            if (pathWaveSvg && lastCardCenter > 0) {
+              const targetSvgWidth = Math.round(lastCardCenter * (3200 / 3140));
+              pathWaveSvg.style.width = `${targetSvgWidth}px`;
+            }
+          }
+        }
+        if (scrubberNodesWrap) {
+          layout.scrubberMaxW = Math.max(0, scrubberNodesWrap.offsetWidth - 16);
+        }
+        if (contactSection) {
+          const r = contactSection.getBoundingClientRect();
+          layout.contactTop = r.top + sy;
+        }
+      }
+
+      let scrollY = window.scrollY || 0;
+      let targetMouseX = 0, targetMouseY = 0;
+      let curMouseX = 0, curMouseY = 0;
+      let curHeroP = 0, curWorkP = 0, curPathP = 0;
+      let prevWorkP = 0, prevPathP = 0;
+      let workVel = 0, pathVel = 0;
+      let lastActiveMilestone = -1;
+      let lastTime = performance.now();
+
+      window.addEventListener('mousemove', (e) => {
+        targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      }, { passive: true });
+
+      let snapTimer = null;
+      let isSnappingContact = false;
+      window.addEventListener('scroll', () => {
+        scrollY = window.scrollY || window.pageYOffset || 0;
+
+        if (!contactSection || isSnappingContact) return;
+        const distToContact = layout.contactTop - scrollY;
+        if (mainHeader) {
+          if (distToContact <= 48 && distToContact >= -layout.vh * 0.2) {
+            mainHeader.classList.add('header-fullscreen-mode');
+          } else {
+            mainHeader.classList.remove('header-fullscreen-mode');
+          }
+        }
+        if (snapTimer) clearTimeout(snapTimer);
+        if (distToContact > 4 && distToContact < layout.vh * 0.25) {
+          snapTimer = setTimeout(() => {
+            const curDist = layout.contactTop - (window.scrollY || 0);
+            if (curDist > 4 && curDist < layout.vh * 0.25) {
+              isSnappingContact = true;
+              contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              setTimeout(() => { isSnappingContact = false; }, 700);
+            }
+          }, 140);
+        }
+      }, { passive: true });
+
+      function positionPlaneOnPath(pathEl, planeEl, totalLen, progress) {
+        if (!pathEl || !planeEl || !pathEl.getPointAtLength) return;
+        try {
+          const clamped = Math.max(0, Math.min(1, progress));
+          const dist = clamped * totalLen;
+          const pt = pathEl.getPointAtLength(dist);
+          const nextPt = pathEl.getPointAtLength(Math.min(totalLen, dist + 10));
+          const angle = Math.atan2(nextPt.y - pt.y, nextPt.x - pt.x) * (180 / Math.PI);
+          planeEl.setAttribute('transform', `translate(${pt.x.toFixed(1)}, ${pt.y.toFixed(1)}) rotate(${angle.toFixed(1)})`);
+        } catch (e) {}
+      }
+
+      function updateScrubberClasses(activeIdx) {
+        for (let i = 0; i < PATH_MILESTONES.length; i++) {
+          const dot = pathDotEls[i];
+          const lbl = pathLblEls[i];
+          if (!dot || !lbl) continue;
+          if (i === activeIdx) {
+            dot.className = 'w-3.5 h-3.5 rounded-full border-2 transition-transform bg-[#1E7E3A] border-[#1E7E3A] scale-125 shadow-sm';
+            lbl.className = 'font-mono-code text-[10.5px] sm:text-[11px] font-bold text-[#122418]';
+          } else if (i < activeIdx) {
+            dot.className = 'w-3.5 h-3.5 rounded-full border-2 transition-transform bg-[#1E7E3A]/60 border-[#1E7E3A]';
+            lbl.className = 'font-mono-code text-[10.5px] sm:text-[11px] font-medium text-[#324B3A]';
+          } else {
+            dot.className = 'w-3.5 h-3.5 rounded-full border-2 transition-transform bg-white border-emerald-800/30';
+            lbl.className = 'font-mono-code text-[10.5px] sm:text-[11px] text-[#5C7864]';
+          }
+        }
+      }
+
+      function tick(now) {
+        const dt = Math.min(0.05, Math.max(0.004, (now - lastTime) * 0.001));
+        lastTime = now;
+        const t = now * 0.001;
+
+        const smoothMouse = 1 - Math.exp(-7.5 * dt);
+        const smoothScroll = 1 - Math.exp(-10.5 * dt);
+
+        curMouseX += (targetMouseX - curMouseX) * smoothMouse;
+        curMouseY += (targetMouseY - curMouseY) * smoothMouse;
+
+        // 1. Hero Scroll-Into-Laptop Zoom + Mouse Parallax (Active when Hero is in/near view)
+        const rawHeroP = Math.max(0, Math.min(1, (scrollY - layout.heroTop) / layout.heroScrollable));
+        if (scrollY <= layout.heroTop + layout.heroScrollable + layout.vh) {
+          curHeroP += (rawHeroP - curHeroP) * smoothScroll;
+          const scale = 1 + Math.pow(curHeroP, 1.72) * 3.45;
+          heroScene.style.transform = `translate3d(0, 0, 0) scale3d(${scale.toFixed(4)}, ${scale.toFixed(4)}, 1)`;
+
+          const parallaxStrength = Math.max(0, 1 - curHeroP * 2.4);
+          const px = curMouseX * -18 * parallaxStrength;
+          const py = curMouseY * -12 * parallaxStrength;
+          heroParallax.style.transform = `translate3d(${px.toFixed(2)}px, ${py.toFixed(2)}px, 0) scale3d(1.05, 1.05, 1)`;
+
+          const textOp = Math.max(0, 1 - curHeroP * 2.65);
+          heroTitle.style.opacity = String(textOp.toFixed(3));
+          heroTitle.style.transform = `translate3d(${(curMouseX * 8 * parallaxStrength).toFixed(2)}px, ${(-curHeroP * 60).toFixed(2)}px, 0)`;
+          heroBottom.style.opacity = String(textOp.toFixed(3));
+
+          const flashOp = curHeroP > 0.66 ? Math.min(1, (curHeroP - 0.66) / 0.28) : 0;
+          whiteFlash.style.opacity = String(flashOp.toFixed(3));
+        }
+
+        // 2. Selected Work Horizontal Glide + Restored Per-Card Wave Bobbing & Velocity Tilt!
+        const rawWorkP = Math.max(0, Math.min(1, (scrollY - layout.workTop) / layout.workScrollable));
+        if (scrollY + layout.vh >= layout.workTop - 200 && scrollY <= layout.workTop + layout.workScrollable + layout.vh) {
+          prevWorkP = curWorkP;
+          curWorkP += (rawWorkP - curWorkP) * smoothScroll;
+          const rawWorkDelta = (curWorkP - prevWorkP) / dt;
+          workVel += (rawWorkDelta - workVel) * 0.18;
+
+          const shiftX = -curWorkP * layout.workMaxShift;
+          workTrack.style.transform = `translate3d(${shiftX.toFixed(2)}px, 0, 0)`;
+
+          const velTilt = Math.max(-2.6, Math.min(2.6, -workVel * 1.55));
+          for (let i = 0; i < workCardEls.length; i++) {
+            const waveY = Math.sin(curWorkP * Math.PI * 2.4 + i * 1.15 + t * 1.25) * 5.5;
+            workCardEls[i].style.transform = `translate3d(0, ${waveY.toFixed(2)}px, 0) rotateZ(${velTilt.toFixed(2)}deg)`;
+          }
+
+          positionPlaneOnPath(workWaveActive, workWavePlane, workWaveLen, 0.05 + curWorkP * 0.90);
+        }
+
+        // 3. The Path So Far Horizontal Glide + Restored Per-Milestone Wave Bobbing & Watermark Parallax!
+        const rawPathP = Math.max(0, Math.min(1, (scrollY - layout.pathTop) / layout.pathScrollable));
+        if (scrollY + layout.vh >= layout.pathTop - 200 && scrollY <= layout.pathTop + layout.pathScrollable + layout.vh) {
+          prevPathP = curPathP;
+          curPathP += (rawPathP - curPathP) * smoothScroll;
+          const rawPathDelta = (curPathP - prevPathP) / dt;
+          pathVel += (rawPathDelta - pathVel) * 0.18;
+
+          const pathShiftX = -curPathP * layout.pathMaxShift;
+          pathTrack.style.transform = `translate3d(${pathShiftX.toFixed(2)}px, 0, 0)`;
+
+          const velTilt = Math.max(-2.2, Math.min(2.2, -pathVel * 1.3));
+          for (let i = 0; i < milestoneCardEls.length; i++) {
+            const waveY = Math.cos(curPathP * Math.PI * 2.6 + i * 1.2 + t * 1.15) * 6.0;
+            milestoneCardEls[i].style.transform = `translate3d(0, ${waveY.toFixed(2)}px, 0) rotateZ(${velTilt.toFixed(2)}deg)`;
+          }
+
+          for (let i = 0; i < watermarkEls.length; i++) {
+            const offset = (curPathP * 4 - i) * 42;
+            watermarkEls[i].style.transform = `translate3d(${offset.toFixed(1)}px, 0, 0)`;
+          }
+
+          positionPlaneOnPath(pathWaveActive, pathWavePlane, pathWaveLen, 0.04 + curPathP * 0.92);
+
+          let activeIdx;
+          if (layout.isMobile && layout.cardCenters && layout.cardCenters.length > 0) {
+            let closestDist = Infinity;
+            let closestIdx = 0;
+            for (let i = 0; i < layout.cardCenters.length; i++) {
+              const cardCenter = layout.cardCenters[i] + pathShiftX;
+              const dist = Math.abs(cardCenter - layout.timelineCenter);
+              if (dist < closestDist) {
+                closestDist = dist;
+                closestIdx = i;
+              }
+            }
+            activeIdx = closestIdx;
+          } else {
+            activeIdx = Math.min(
+              PATH_MILESTONES.length - 1,
+              Math.max(0, Math.round(curPathP * (PATH_MILESTONES.length - 1)))
+            );
+          }
+
+          if (scrubberProgBar) {
+            if (layout.isMobile) {
+              const mobileProg = activeIdx / (PATH_MILESTONES.length - 1);
+              scrubberProgBar.style.width = `${(mobileProg * layout.scrubberMaxW).toFixed(1)}px`;
+            } else {
+              scrubberProgBar.style.width = `${(curPathP * layout.scrubberMaxW).toFixed(1)}px`;
+            }
+          }
+          if (activeIdx !== lastActiveMilestone) {
+            lastActiveMilestone = activeIdx;
+            updateScrubberClasses(activeIdx);
+          }
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      measureLayout();
+      window.addEventListener('resize', measureLayout, { passive: true });
+      window.addEventListener('load', measureLayout, { passive: true });
+      requestAnimationFrame(tick);
+    }
+
+    // =========================================================================
+    // 9. RESTORED 3D MAGNETIC CARD TILT ON HOVER (GPU ACCELERATED)
+    // =========================================================================
+    function initMagneticCardTilt() {
+      document.querySelectorAll('#also-desk-row .work-card, #about .work-card').forEach((card) => {
+        card.addEventListener('pointermove', (e) => {
+          const r = card.getBoundingClientRect();
+          const nx = (e.clientX - r.left) / r.width - 0.5;
+          const ny = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform = `perspective(850px) translate3d(0, -6px, 0) rotateX(${(-ny * 6.5).toFixed(2)}deg) rotateY(${(nx * 6.5).toFixed(2)}deg)`;
+        });
+        card.addEventListener('pointerleave', () => {
+          card.style.transform = '';
+        });
+      });
+    }
+
+    // =========================================================================
+    // 10. MODALS, CLIPBOARD & EVENT HANDLERS
+    // =========================================================================
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById('toast-pill');
+      document.getElementById('toast-pill-text').textContent = msg;
+      el.classList.remove('hidden');
+      el.classList.add('flex');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        el.classList.add('hidden');
+        el.classList.remove('flex');
+      }, 2800);
+    }
+
+    function copyEmailText() {
+      const email = 'dzakiudin07@gmail.com';
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = email;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+      } catch (e) {}
+    }
+
+    function openCaseModal(idx) {
+      const c = SELECTED_WORK_CARDS[idx];
+      if (!c) return;
+      playChime(587.33);
+      document.getElementById('modal-img').src = c.realScreenshot || c.image;
+      document.getElementById('modal-org').textContent = c.org;
+      document.getElementById('modal-title').textContent = c.title;
+      document.getElementById('modal-desc').textContent = c.fullDesc;
+      document.getElementById('modal-link').href = c.link;
+      document.getElementById('modal-arch-pipeline').textContent = c.archPipeline || '';
+      document.getElementById('modal-bullets').innerHTML = c.bullets.map((b, i) => `
+        <li class="flex items-start gap-2.5">
+          <span class="font-mono-code text-[10px] px-1.5 py-0.5 rounded bg-emerald-800 text-white font-bold shrink-0 mt-0.5">0${i + 1}</span>
+          <span>${b}</span>
+        </li>
+      `).join('');
+      const m = document.getElementById('case-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderSelectedWork();
+      renderAlsoOnDesk();
+      renderPathPanorama();
+      renderBarbellRack(0);
+      initHeroMeadowCanvas();
+      initStarryPaperPlane();
+      initDynamicScrollAndParallaxEngine();
+      initMagneticCardTilt();
+
+      const soundBtn = document.getElementById('btn-meadow-sound');
+      if (soundBtn) {
+        soundBtn.addEventListener('click', () => {
+          soundMuted = false;
+          playGhibliMeadowArpeggio();
+          showToast('🍃 Playing Studio Ghibli meadow wind chimes...');
+        });
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal-up').forEach((el) => io.observe(el));
+
+      const workDriver = document.getElementById('work-scroll-driver');
+      document.getElementById('btn-work-prev').addEventListener('click', () => {
+        window.scrollBy({ top: -350, behavior: 'smooth' });
+      });
+      document.getElementById('btn-work-next').addEventListener('click', () => {
+        if (workDriver) window.scrollBy({ top: 350, behavior: 'smooth' });
+      });
+
+      let kIdx = 0;
+      document.getElementById('btn-catch-kudos').addEventListener('click', () => {
+        kIdx = (kIdx + 1) % KUDOS_DATA.length;
+        playChime(523.25 + kIdx * 45);
+        document.getElementById('kudos-quote-text').textContent = KUDOS_DATA[kIdx].q;
+        document.getElementById('kudos-quote-author').textContent = KUDOS_DATA[kIdx].a;
+        document.getElementById('kudos-count-badge').textContent = `${kIdx + 1}/5`;
+        const dots = document.getElementById('kudos-dots-group').children;
+        for (let i = 0; i < dots.length; i++) {
+          dots[i].className = i <= kIdx
+            ? 'w-2 h-2 rounded-full bg-[#1E7E3A] transition-colors'
+            : 'w-2 h-2 rounded-full bg-emerald-950/20 transition-colors';
+        }
+      });
+
+      const traitMessages = {
+        detail: '🔍 Keen eye for detail — Every pixel, database index & RBAC audit log is verified.',
+        systems: '🏛️ Systems builder — Studying Computer Science at UNIBA Madura after SMKN 1 Sumenep.',
+        code: '⚡ Prototypes in code — Working TypeScript + Gemini AI apps beat static mockups.',
+        hardware: '🪛 Hardware troubleshooter — 7+ years diagnosing motherboards & networks since 2019.'
+      };
+      document.querySelectorAll('.trait-pill').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const t = btn.getAttribute('data-trait');
+          playChime(659.25);
+          showToast(traitMessages[t]);
+        });
+      });
+
+      document.getElementById('barbell-rack-click').addEventListener('click', () => {
+        const next = (liftStep + 1) % 5;
+        playChime(392.0 + next * 50);
+        renderBarbellRack(next);
+      });
+      document.querySelectorAll('.lift-step-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const s = Number(btn.getAttribute('data-lift-step'));
+          playChime(392.0 + s * 50);
+          renderBarbellRack(s);
+        });
+      });
+
+      const caseModal = document.getElementById('case-modal');
+      document.getElementById('btn-close-modal').addEventListener('click', () => {
+        caseModal.classList.add('hidden');
+        caseModal.classList.remove('flex');
+      });
+      caseModal.addEventListener('click', (e) => {
+        if (e.target === caseModal) {
+          caseModal.classList.add('hidden');
+          caseModal.classList.remove('flex');
+        }
+      });
+
+      const cvModal = document.getElementById('cv-shortcut-modal');
+      function openCvModal() {
+        playChime(659.25);
+        cvModal.classList.remove('hidden');
+        cvModal.classList.add('flex');
+      }
+      function closeCvModal() {
+        cvModal.classList.add('hidden');
+        cvModal.classList.remove('flex');
+      }
+      ['btn-header-cv', 'btn-night-cv', 'btn-night-psst'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('click', openCvModal);
+      });
+      document.getElementById('btn-close-cv-modal').addEventListener('click', closeCvModal);
+      cvModal.addEventListener('click', (e) => {
+        if (e.target === cvModal) closeCvModal();
+      });
+
+      ['btn-night-copy', 'btn-cv-copy-email'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('click', () => {
+            copyEmailText();
+            showToast('Copied dzakiudin07@gmail.com to clipboard!');
+          });
+        }
+      });
+
+      let keyBuf = '';
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeCvModal();
+          caseModal.classList.add('hidden');
+          caseModal.classList.remove('flex');
+          return;
+        }
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key.length === 1) {
+          keyBuf = (keyBuf + e.key.toLowerCase()).slice(-4);
+          if (keyBuf === 'hire') {
+            openCvModal();
+            showToast('🍃 Unlocked Portfolio Shortcut!');
+            keyBuf = '';
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
