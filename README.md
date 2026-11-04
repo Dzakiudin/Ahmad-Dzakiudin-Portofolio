@@ -1,64 +1,67 @@
-# Ahmad Dzakiudin — Portfolio
+# Ahmad Dzakiudin — Portfolio (React + TypeScript + Vite)
 
-Personal portfolio for Ahmad Dzakiudin, a full-stack developer and AI systems builder. The site is
-a static page built from one HTML file, with its styles and JavaScript included inline.
+Personal portfolio for Ahmad Dzakiudin, a full-stack developer and AI systems builder. Built with **React 18**, **TypeScript**, **Vite**, and **Tailwind CSS**.
 
 ## What’s on the site
 
-- **Hero** — illustrated portfolio introduction with animated meadow details and a scroll transition.
-- **Selected work** — four featured projects presented in a scroll-driven horizontal gallery, with
-  project details and repository links.
-- **Also on the desk** — cards for additional software, public-sector IT, archive, and hardware work.
-- **Career path** — a horizontal timeline with milestone cards and a year scrubber.
-- **About** — profile, interactive kudos, skills, and a small barbell progress widget.
-- **Contact** — an interactive paper-plane scene, email and social links, and a CV/contact modal.
-- **Responsive layout** — mobile-friendly sections and controls, with scroll-driven effects on larger
-  screens.
+- **Hero (`HeroSection.tsx`)** — illustrated portfolio introduction with animated meadow details, 60fps butterfly & pollen canvas, and a scroll-into-the-laptop transition.
+- **Selected work (`SelectedWorkSection.tsx`)** — four featured projects presented in a scroll-driven horizontal gallery, with project details and repository links.
+- **Also on the desk (`SelectedWorkSection.tsx`)** — cards for additional software, public-sector IT, archive, and hardware work.
+- **Career path (`PathSection.tsx`)** — a horizontal timeline with milestone cards and an interactive year scrubber.
+- **About (`AboutSection.tsx`)** — profile, interactive kudos catcher, trait pills, skills, and a barbell progress widget.
+- **Contact (`ContactSection.tsx`)** — an interactive paper-plane slingshot scene with fireflies, email and social links, and a CV/contact modal.
+
+## Project Structure
+
+```text
+├── public/
+│   └── assets/                  # Local portfolio illustrations, profile photo, and project images
+├── src/
+│   ├── components/
+│   │   ├── Header.tsx           # Floating pill navigation bar & wind chimes trigger
+│   │   ├── HeroSection.tsx      # Sticky scroll-into-laptop hero + meadow canvas
+│   │   ├── SelectedWorkSection.tsx # Horizontal work gallery & "Also on the desk" grid
+│   │   ├── PathSection.tsx      # Horizontal career chronology & year scrubber
+│   │   ├── AboutSection.tsx     # Kudos catcher, portrait, traits & barbell widget
+│   │   ├── ContactSection.tsx   # Interactive twilight paper-plane slingshot canvas
+│   │   ├── CaseModal.tsx        # Project architecture & case study modal
+│   │   ├── CvModal.tsx          # Portfolio shortcut & CV modal
+│   │   └── Toast.tsx            # Toast notification pill
+│   ├── data/
+│   │   └── portfolioData.ts     # Typed project, timeline, kudos, and skill datasets
+│   ├── hooks/
+│   │   ├── useScrollAndParallaxEngine.ts # 120fps GPU scroll & wave inertia engine
+│   │   └── useRevealAndMagneticTilt.ts   # Scroll reveal & 3D magnetic card tilt
+│   ├── types/
+│   │   └── portfolio.ts         # TypeScript interfaces
+│   ├── utils/
+│   │   └── sound.ts             # Web Audio API pentatonic wind chimes & clipboard helper
+│   ├── App.tsx                  # Root portfolio layout & keyboard shortcuts
+│   ├── index.css                # Tailwind directives & custom Studio Ghibli animations
+│   └── main.tsx                 # React DOM entry point
+├── index.html                   # Vite HTML entry
+├── package.json
+├── tailwind.config.js
+├── tsconfig.json
+├── vercel.json
+└── vite.config.ts
+```
 
 ## Run locally
 
-No build step or package installation is required. Clone the repository and open `index.html` in a
-browser:
+Install dependencies and start the Vite development server:
 
 ```bash
-git clone https://github.com/Dzakiudin/Ahmad-Dzakiudin-Portofolio.git
-cd Ahmad-Dzakiudin-Portofolio
+npm install
+npm run dev
 ```
 
-You can also serve the files locally:
+Build for production:
 
 ```bash
-python -m http.server 8000
+npm run build
+npm run preview
 ```
-
-Then open <http://localhost:8000>.
-
-## Deploy
-
-This is a static site. The included [`vercel.json`](./vercel.json) configures Vercel to serve the
-repository root without a framework build step. Connect the GitHub repository to Vercel, or deploy
-from the project directory with the Vercel CLI.
-
-## Files and assets
-
-| Path | Purpose |
-| --- | --- |
-| `index.html` | Page markup, inline CSS, page content, and interactive JavaScript |
-| `assets/` | Local portfolio illustrations, profile photo, and project images |
-| `vercel.json` | Static Vercel deployment configuration |
-
-Tailwind CSS 3.4.17 and the Fraunces, Plus Jakarta Sans, and JetBrains Mono fonts load from CDNs.
-Some project screenshots and card images are also loaded from external image URLs, so an internet
-connection is needed for those assets.
-
-## Interactions
-
-- Scroll through the hero, work gallery, and career timeline.
-- Select a featured project to open its case-study details.
-- Use the timeline scrubber, kudos button, and barbell widget.
-- Drag the paper plane in the contact scene or use **Auto-throw**.
-- Open the CV/contact modal from the navigation.
-- Press `Esc` to close an open modal.
 
 ## Contact
 

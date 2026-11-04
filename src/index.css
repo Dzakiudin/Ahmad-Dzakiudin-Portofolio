@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-cream: #EEF6E8;
+  --bg-card: #FCFDFB;
+  --bg-pill: #DFEFE0;
+  --text-dark: #122418;
+  --text-body: #324B3A;
+  --text-muted: #5C7864;
+  --accent-rust: #1E7E3A;
+  --accent-leaf: #2E9E49;
+  --accent-sky: #1B76B5;
+  --accent-gold: #D97706;
+  --border-warm: rgba(18, 36, 24, 0.09);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  border-color: var(--border-warm);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+/*
+ * Proportional viewport scaling for all non-mobile screens (13", 14", 15.6", 24", 27", ultrawide, etc.).
+ * Leaves mobile (< 640px) completely untouched at 16px, while scaling all rem-based typography,
+ * cards, paddings, and gaps harmoniously with both viewport width (vw) and height (vh) on laptops/desktops.
+ */
+@media (min-width: 640px) {
+  html {
+    font-size: clamp(9.5px, min(1.04vw, 1.62vh), 16px);
+  }
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  background-color: var(--bg-cream);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(167, 232, 189, 0.45), transparent 70%),
+    radial-gradient(rgba(30, 126, 58, 0.13) 1px, transparent 1px);
+  background-size: 100% 100%, 1.5rem 1.5rem;
+  color: var(--text-dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle watercolor paper grain overlay */
+.ghibli-paper-grain {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(167, 232, 189, 0.45), transparent 70%),
+    radial-gradient(rgba(30, 126, 58, 0.13) 1px, transparent 1px);
+  background-size: 100% 100%, 1.5rem 1.5rem;
+}
+
+/* Hardware GPU Compositor Promotion */
+.gpu-layer {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+
+.gpu-fade {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* Unified layout container with generous horizontal padding across all viewports */
+.section-shell {
+  width: 100%;
+  max-width: 83.75rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 4.5vw, 3.75rem);
+  padding-right: clamp(1.25rem, 4.5vw, 3.75rem);
+}
+
+.font-display-serif {
+  font-family: 'Fraunces', 'Plus Jakarta Sans', Georgia, serif;
+  letter-spacing: -0.025em;
+}
+
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Floating Pill Header */
+#main-header {
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#main-header.header-fullscreen-mode {
+  opacity: 0.16;
+  transform: translate3d(0, -6px, 0);
+}
+#main-header.header-fullscreen-mode:hover {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.floating-pill {
+  background: rgba(250, 253, 248, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0.625rem 1.75rem -0.375rem rgba(18, 36, 24, 0.12), 0 0 0 1px rgba(30, 126, 58, 0.08);
+}
+
+/* Botanical Handcrafted Cards with smooth 3D magnetic tilt */
+.work-card {
+  position: relative;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FBF6 100%);
+  border-radius: 1.75rem;
+  border: 1px solid rgba(18, 36, 24, 0.08);
+  box-shadow: 0 1rem 2.375rem -0.75rem rgba(18, 36, 24, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.38s ease, box-shadow 0.38s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+.work-card:hover {
+  border-color: rgba(30, 126, 58, 0.28);
+  box-shadow: 0 1.625rem 3.25rem -0.75rem rgba(18, 36, 24, 0.16), 0 0 0 1px rgba(46, 158, 73, 0.14);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Giant outlined watermark year behind "The path so far" */
+.watermark-year {
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  font-size: clamp(6.5rem, 12rem, 14rem);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(30, 126, 58, 0.17);
+  user-select: none;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Smooth organic floating callout pills */
+@keyframes gentleBob {
+  0%, 100% { transform: translate3d(0, 0px, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -0.375rem, 0) rotate(0.6deg); }
+}
+.floating-badge {
+  animation: gentleBob 4.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(18, 36, 24, 0.1);
+  box-shadow: 0 0.75rem 1.625rem -0.375rem rgba(18, 36, 24, 0.13);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Floating Dandelion Seeds & Sketched Paper Plane in Hero */
+@keyframes floatSeed {
+  0%, 100% { transform: translate3d(0px, 0px, 0) rotate(0deg); }
+  50% { transform: translate3d(0.75rem, -0.875rem, 0) rotate(7deg); }
+}
+.dandelion-seed {
+  animation: floatSeed 5.5s ease-in-out infinite;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Animated Wind Ribbons */
+@keyframes windRibbon {
+  0% { stroke-dashoffset: 320; opacity: 0; }
+  30% { opacity: 0.65; }
+  70% { opacity: 0.65; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+.ghibli-wind-path {
+  stroke-dasharray: 110 210;
+  animation: windRibbon 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Barbell Plate Slide-In Spring Animation (from outer sleeve tip inward!) */
+@keyframes slideFromLeftTip {
+  0% { transform: translate3d(-18px, 0, 0) scaleY(0.84); opacity: 0; }
+  65% { transform: translate3d(2px, 0, 0) scaleY(1.04); opacity: 1; }
+  100% { transform: translate3d(0, 0, 0) scaleY(1); opacity: 1; }
+}
+@keyframes slideFromRightTip {
+  0% { transform: translate3d(18px, 0, 0) scaleY(0.84); opacity: 0; }
+  65% { transform: translate3d(-2px, 0, 0) scaleY(1.04); opacity: 1; }
+  100% { transform: translate3d(0, 0, 0) scaleY(1); opacity: 1; }
+}
+.plate-anim-left {
+  transform-origin: center;
+  animation: slideFromLeftTip 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.plate-anim-right {
+  transform-origin: center;
+  animation: slideFromRightTip 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes barBounce {
+  0% { transform: translate3d(0, 0, 0); }
+  35% { transform: translate3d(0, 3.5px, 0); }
+  70% { transform: translate3d(0, -1.5px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+.bar-loaded-bounce {
+  animation: barBounce 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Scroll reveal animations */
+.reveal-up {
+  opacity: 0;
+  transform: translate3d(0, 1.75rem, 0);
+  transition: opacity 0.72s cubic-bezier(0.16, 1, 0.3, 1), transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
