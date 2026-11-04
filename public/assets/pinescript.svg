@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <rect width="640" height="360" fill="#0B131E"/>
+  <rect x="28" y="24" width="584" height="312" rx="18" fill="#101C2B" stroke="#10B981" stroke-opacity="0.35" stroke-width="1.5"/>
+  <text x="54" y="60" fill="#ECFDF5" font-family="sans-serif" font-size="19" font-weight="800">📈 TradingView PineScript — Quantitative Strategy Suite</text>
+  <rect x="54" y="82" width="532" height="178" rx="14" fill="#091019" stroke="#1E293B"/>
+  <!-- Candlesticks & EMA Ribbon -->
+  <path d="M 74,215 C 150,205 210,165 290,172 C 370,178 440,120 560,104" stroke="#34D399" stroke-width="2.5"/>
+  <path d="M 74,230 C 150,222 210,185 290,190 C 370,196 440,145 560,128" stroke="#38BDF8" stroke-width="2" stroke-dasharray="4 4"/>
+  <!-- Buy/Sell Signal Pills -->
+  <rect x="195" y="138" width="56" height="22" rx="6" fill="#059669"/>
+  <text x="206" y="153" fill="#FFFFFF" font-family="monospace" font-size="10.5" font-weight="700">LONG ▲</text>
+  <rect x="455" y="92" width="66" height="22" rx="6" fill="#0284C7"/>
+  <text x="465" y="107" fill="#FFFFFF" font-family="monospace" font-size="10.5" font-weight="700">TARGET ✓</text>
+  <text x="54" y="294" fill="#94A3B8" font-family="monospace" font-size="12">Multi-Timeframe Momentum · Volatility Filter · Non-Repainting Signals</text>
+</svg>

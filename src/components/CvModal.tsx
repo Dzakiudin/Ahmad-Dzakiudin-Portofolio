@@ -48,7 +48,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose, onShowToast }
         </div>
         <div className="grid grid-cols-3 gap-2.5 text-center">
           <div className="p-3 rounded-2xl bg-white border border-emerald-900/10">
-            <div className="font-display-serif text-xl font-extrabold text-[#1E7E3A]">20+</div>
+            <div className="font-display-serif text-xl font-extrabold text-[#1E7E3A]">25+</div>
             <div className="text-[10px] text-[#324B3A] mt-0.5">Shipped Repos</div>
           </div>
           <div className="p-3 rounded-2xl bg-white border border-emerald-900/10">

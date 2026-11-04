@@ -9,6 +9,7 @@ export interface WorkCardItem {
   image: string;
   realScreenshot: string;
   link: string;
+  liveUrl?: string;
   archPipeline: string;
   fullDesc: string;
   bullets: string[];
@@ -21,6 +22,7 @@ export interface AlsoDeskItem {
   sub: string;
   image: string;
   link: string;
+  liveUrl?: string;
 }
 
 export interface PathMilestone {

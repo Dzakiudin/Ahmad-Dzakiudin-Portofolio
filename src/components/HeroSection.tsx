@@ -238,7 +238,7 @@ export const HeroSection: React.FC = () => {
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/88 backdrop-blur-md border border-emerald-900/10 text-[10.5px] sm:text-[0.6875rem] font-mono-code text-emerald-900 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-            <span>SUMENEP, EAST JAVA · UNIBA MADURA CS · 20+ SHIPPED REPOS</span>
+            <span>SUMENEP, EAST JAVA · UNIBA MADURA CS · 25+ SHIPPED REPOS</span>
           </div>
           <h1
             className="font-display-serif text-2xl sm:text-4xl md:text-[3.35rem] font-extrabold tracking-tight leading-[1.08] text-[#102216]"
@@ -255,11 +255,11 @@ export const HeroSection: React.FC = () => {
           >
             Full-stack developer with{' '}
             <strong className="font-bold text-[#102216] underline decoration-[#1E7E3A] decoration-2 underline-offset-2">
-              20+ shipped repositories
+              25+ shipped repositories
             </strong>
             . Studying Computer Science at <strong className="font-bold text-[#102216]">UNIBA Madura</strong>,
             prototyping in code, and building{' '}
-            <strong className="font-bold text-[#102216]">Google Gemini Pro</strong> &amp;{' '}
+            <strong className="font-bold text-[#102216]">Go, Next.js, Gemini Pro AI</strong> &amp;{' '}
             <strong className="font-bold text-[#102216]">PostgreSQL</strong> platforms.
           </p>
         </div>

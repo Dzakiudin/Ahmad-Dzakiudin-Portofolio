@@ -45,15 +45,27 @@ export const CaseModal: React.FC<CaseModalProps> = ({ card, onClose }) => {
                 {card.title}
               </h3>
             </div>
-            <a
-              id="modal-link"
-              href={card.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-full bg-[#122418] hover:bg-emerald-900 text-white text-xs font-semibold transition-colors"
-            >
-              View Repository on GitHub ↗
-            </a>
+            <div className="flex flex-wrap items-center gap-2">
+              {card.liveUrl && (
+                <a
+                  href={card.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-full bg-[#1E7E3A] hover:bg-emerald-800 text-white text-xs font-semibold transition-colors"
+                >
+                  Live Demo ↗
+                </a>
+              )}
+              <a
+                id="modal-link"
+                href={card.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-full bg-[#122418] hover:bg-emerald-900 text-white text-xs font-semibold transition-colors"
+              >
+                View Repository on GitHub ↗
+              </a>
+            </div>
           </div>
           <p id="modal-desc" className="text-xs sm:text-sm leading-relaxed text-[#324B3A]">
             {card.fullDesc}

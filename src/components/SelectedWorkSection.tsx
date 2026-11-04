@@ -17,7 +17,7 @@ export const SelectedWorkSection: React.FC<SelectedWorkSectionProps> = ({ onSele
 
   return (
     <section id="work" className="relative">
-      <div id="work-scroll-driver" className="relative h-[285vh]">
+      <div id="work-scroll-driver" className="relative h-[390vh]">
         <div className="sticky-section-pad sticky top-0 h-screen min-h-[100dvh] w-full overflow-hidden flex flex-col pt-24 sm:pt-24 pb-6 sm:pb-8">
           {/* Wavy Dotted Wind Trajectory Line + Flying Paper Plane Behind Cards */}
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[25rem] sm:h-[26.875rem] pointer-events-none z-0 overflow-hidden">
@@ -73,7 +73,7 @@ export const SelectedWorkSection: React.FC<SelectedWorkSectionProps> = ({ onSele
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-xs sm:text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
-                  Four flagship systems, newest first · Scroll to glide
+                  Seven flagship systems, newest first · Scroll to glide
                 </span>
                 <div className="sr-only" aria-hidden="true">
                   <button id="btn-work-prev" type="button" onClick={handlePrev}>
@@ -157,20 +157,20 @@ export const SelectedWorkSection: React.FC<SelectedWorkSectionProps> = ({ onSele
                 {/* More from the desk card */}
                 <article
                   className="w-[80vw] max-w-[325px] sm:w-[21.5rem] sm:max-w-none rounded-[1.75rem] p-7 sm:p-8 flex flex-col justify-center items-center text-center space-y-4 shrink-0 border-2 border-dashed border-emerald-900/20 bg-[#E6F4E2]/60 gpu-layer"
-                  data-work-card={4}
+                  data-work-card={SELECTED_WORK_CARDS.length}
                 >
                   <span className="text-2xl">🌿</span>
                   <h3 className="font-display-serif text-2xl sm:text-3xl font-extrabold" style={{ color: 'var(--text-dark)' }}>
                     More from the desk
                   </h3>
                   <p className="text-xs sm:text-sm leading-relaxed" style={{ color: 'var(--text-body)' }}>
-                    A fuzzy-search knowledge hub, legislative IT infrastructure at DPRD Sumenep, BPN archive digitization, and early hardware work.
+                    10+ additional open-source tools, autonomous Python AI agents, Svelte/Astro web apps, and public-sector IT operations.
                   </p>
                   <a
                     href="#also-on-desk"
                     className="mt-2 px-5 py-2.5 rounded-full bg-[#122418] text-white text-xs font-bold inline-flex items-center gap-2 hover:scale-105 transition-transform"
                   >
-                    <span>See the rest</span>
+                    <span>See all 10 below</span>
                     <span>→</span>
                   </a>
                 </article>
@@ -185,7 +185,7 @@ export const SelectedWorkSection: React.FC<SelectedWorkSectionProps> = ({ onSele
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-14 reveal-up">
           <div>
             <div className="text-[11px] sm:text-[0.6875rem] font-mono-code uppercase tracking-wider text-emerald-800 font-semibold mb-1.5">
-              Field Notes &amp; Public Sector IT
+              Open-Source Repositories &amp; Public Sector IT
             </div>
             <h3
               className="font-display-serif text-3xl sm:text-5xl font-extrabold tracking-tight"
@@ -195,7 +195,7 @@ export const SelectedWorkSection: React.FC<SelectedWorkSectionProps> = ({ onSele
             </h3>
           </div>
           <p className="text-xs sm:text-sm max-w-md sm:text-right leading-relaxed" style={{ color: 'var(--text-muted)' }}>
-            A fuzzy-search knowledge hub, legislative IT operations at DPRD Sumenep, BPN archive digitization, and hardware diagnostics.
+            Autonomous Python AI agents, Svelte 5 &amp; Astro web apps, network monitoring daemons, browser extensions, and legislative IT ops.
           </p>
         </div>
 
@@ -204,10 +204,10 @@ export const SelectedWorkSection: React.FC<SelectedWorkSectionProps> = ({ onSele
             <article
               key={c.title}
               className="work-card p-5 sm:p-6 flex flex-col justify-between space-y-4 reveal-up"
-              style={{ transitionDelay: `${i * 60}ms` }}
+              style={{ transitionDelay: `${(i % 5) * 60}ms` }}
             >
               <div>
-                <div className="h-36 sm:h-40 rounded-2xl overflow-hidden bg-emerald-100 mb-4 border border-emerald-900/10">
+                <div className="h-36 sm:h-40 rounded-2xl overflow-hidden bg-emerald-950/90 mb-4 border border-emerald-900/10">
                   <img
                     src={c.image}
                     alt={c.title}
@@ -225,16 +225,26 @@ export const SelectedWorkSection: React.FC<SelectedWorkSectionProps> = ({ onSele
                   {c.desc}
                 </p>
               </div>
-              <div className="pt-2">
+              <div className="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-emerald-900/10">
                 <a
                   href={c.link}
                   target={c.link.startsWith('http') ? '_blank' : undefined}
                   rel={c.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="text-xs font-bold inline-flex items-center gap-1.5 hover:underline"
+                  className="text-xs font-bold inline-flex items-center gap-1 hover:underline"
                   style={{ color: 'var(--accent-rust)' }}
                 >
-                  <span>Read the story →</span>
+                  <span>{c.link.startsWith('http') ? 'GitHub Repo →' : 'Read story →'}</span>
                 </a>
+                {c.liveUrl && (
+                  <a
+                    href={c.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2.5 py-0.5 rounded-full bg-emerald-100 hover:bg-emerald-200 text-[#1E7E3A] text-[10.5px] sm:text-[0.65rem] font-bold transition-colors"
+                  >
+                    Live Demo ↗
+                  </a>
+                )}
               </div>
             </article>
           ))}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <rect width="640" height="360" fill="#0D1117"/>
+  <circle cx="520" cy="70" r="190" fill="#8B5CF6" fill-opacity="0.2"/>
+  <circle cx="120" cy="290" r="160" fill="#10B981" fill-opacity="0.18"/>
+  <rect x="28" y="24" width="584" height="312" rx="20" fill="#131A24" stroke="#A78BFA" stroke-opacity="0.35" stroke-width="1.5"/>
+  <text x="54" y="62" fill="#F3E8FF" font-family="sans-serif" font-size="20" font-weight="800">✦ Reflectify — AI Mindfulness &amp; Habit Telemetry</text>
+  <rect x="490" y="42" width="96" height="26" rx="13" fill="#2E1065" stroke="#A78BFA"/>
+  <text x="512" y="59" fill="#DDD6FE" font-family="monospace" font-size="11" font-weight="700">Svelte 5</text>
+
+  <!-- Mood & Focus Wave Chart -->
+  <rect x="54" y="84" width="340" height="156" rx="14" fill="#0D131C" stroke="#374151"/>
+  <text x="72" y="110" fill="#9CA3AF" font-family="monospace" font-size="11">MOOD &amp; FOCUS CORRELATION · 7 DAYS</text>
+  <path d="M 74,205 C 120,180 155,130 205,145 C 255,160 290,110 370,102" stroke="#A78BFA" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 74,218 C 120,195 160,165 210,168 C 260,170 305,132 370,122" stroke="#34D399" stroke-width="2.5" stroke-dasharray="5 5" stroke-linecap="round"/>
+  <circle cx="370" cy="102" r="5" fill="#F3E8FF"/>
+
+  <!-- Daily Score Card -->
+  <rect x="412" y="84" width="174" height="156" rx="14" fill="#1E1B4B" stroke="#8B5CF6" stroke-opacity="0.5"/>
+  <text x="432" y="112" fill="#C4B5FD" font-family="monospace" font-size="11" font-weight="700">CLARITY INDEX</text>
+  <text x="432" y="164" fill="#FFFFFF" font-family="serif" font-size="44" font-weight="800">94%</text>
+  <text x="432" y="192" fill="#6EE7B7" font-family="sans-serif" font-size="12" font-weight="600">+18% focus streak</text>
+  <text x="432" y="214" fill="#DDD6FE" font-family="monospace" font-size="10.5">Mindset · Emotion · Flow</text>
+
+  <!-- Bottom Tags -->
+  <rect x="54" y="256" width="532" height="54" rx="12" fill="#0D131C" stroke="#374151"/>
+  <text x="74" y="288" fill="#E5E7EB" font-family="sans-serif" font-size="13" font-weight="600">Insight Journal · Emotional Growth Analytics · Glassmorphic Dark UI</text>
+</svg>
